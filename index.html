@@ -6,12 +6,27 @@
     <title>Khaine | The Traveller | Esplora il Mondo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- FONTS AGGIUNTI DA LINK2.0 e KIT VIAGGIO -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&family=Open+Sans:wght@400;600&display=swap');
         
         :root {
             --primary: #0f172a;
             --accent: #10b981;
+            /* VARIABILI LINK 2.0 */
+            --primary-gold: #c5a059;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --modal-overlay: rgba(7, 10, 18, 0.95);
+            /* VARIABILI KIT VIAGGIO */
+            --kit-bg-dark: #020617;
+            --kit-bg-card: #0f172a;
+            --kit-primary: #f87171;
+            --kit-text-main: #f1f5f9;
+            --kit-text-muted: #94a3b8;
         }
 
         body { font-family: 'Montserrat', sans-serif; }
@@ -34,12 +49,128 @@
         }
 
         /* Stili per le modali */
-        #itinerarioModal, #helsinkiModal, #disclaimerModal, #copeModal, #chiSonoModal, #blogModal, #contattiModal, #linkUtiliModal {
+        #itinerarioModal, #helsinkiModal, #disclaimerModal, #copeModal, #chiSonoModal, #blogModal, #contattiModal, #linkUtiliModal, #kitViaggioModal {
             display: none;
             position: fixed;
             inset: 0;
             z-index: 100;
             background: rgba(15, 23, 42, 0.95);
+            overflow-y: auto;
+        }
+
+        /* STILI SPECIFICI LINK 2.0 INTEGRATI */
+        .l2-font-cinzel { font-family: 'Cinzel', serif; }
+        .l2-font-inter { font-family: 'Inter', sans-serif; }
+
+        .l2-gold-gradient {
+            background: linear-gradient(135deg, #c5a059 0%, #f1d592 50%, #c5a059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .l2-card-container {
+            background: var(--card-bg);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .l2-card-container:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* STILI SPECIFICI KIT VIAGGIO INTEGRATI */
+        .kit-font-inter { font-family: 'Inter', sans-serif; }
+        .kit-font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .kit-header-bg {
+            background: linear-gradient(rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.9)), 
+                        url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .kit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .kit-item {
+            background: var(--kit-bg-card);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid #1e293b;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .kit-item:hover {
+            border-color: var(--kit-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(248, 113, 113, 0.1);
+        }
+
+        .kit-icon {
+            font-size: 2rem;
+            color: var(--kit-primary);
+            margin-bottom: 15px;
+        }
+
+        .kit-specs {
+            background: #1e293b;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--kit-text-muted);
+            margin-top: auto;
+        }
+
+        .kit-specs li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .kit-specs li span:first-child { color: var(--kit-primary); }
+
+        .kit-philosophy {
+            background: rgba(248, 113, 113, 0.05);
+            border: 1px solid rgba(248, 113, 113, 0.2);
+        }
+
+        /* Modal di secondo livello per i dettagli Link 2.0 */
+        #link2DetailModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200; /* Superiore al modale principale */
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            backdrop-filter: blur(12px);
+            background: var(--modal-overlay);
+        }
+
+        .l2-modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--primary-gold);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            pointer-events: auto;
+        }
+
+        /* NUOVO: Stile specifico per il popup di secondo livello (Boscolo - Mantenuto per compatibilità legacy se servisse, ma ora c'è quello nuovo) */
+        #boscoloModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 110; 
+            background: rgba(15, 23, 42, 0.98);
             overflow-y: auto;
         }
         
@@ -194,7 +325,7 @@
         </div>
     </section>
 
-    <!-- Modale Copenaghen (integrazione completa di cope.html) -->
+    <!-- Modale Copenaghen -->
     <div id="copeModal">
         <div class="max-w-4xl mx-auto my-12 bg-white rounded-3xl overflow-hidden shadow-2xl relative">
             <style>
@@ -381,7 +512,7 @@
                 <button onclick="toggleModal('disclaimerModal')" class="absolute top-6 right-6 text-3xl hover:text-emerald-300 transition z-20 bg-black/20 w-12 h-12 rounded-full">&times;</button>
                 <h2 class="text-2xl font-bold mb-4 italic">Disclaimer Legale</h2>
                 <div class="text-sm text-slate-700 space-y-4 leading-relaxed">
-                    <p>Il sito khainethetraveller.netlify.app è un blog personale e un portale di consulenza itinerari gestito da Enrico De A.</p>
+                    <p>Il sito https://khainevindsvalr.github.io/KhaineTheTraveller/ è un blog personale e un portale di consulenza itinerari gestito da Enrico De A.</p>
 
                     <p>Si precisa che il titolare non è un’agenzia di viaggi né un tour operator. In conformità con la normativa vigente (D.Lgs. 79/2011), l'attività svolta consiste esclusivamente nella pianificazione di itinerari personalizzati e nella consulenza strategica al viaggio.</p>
 
@@ -654,7 +785,6 @@
                     <h1 class="text-4xl md:text-6xl font-black mb-2 tracking-tighter uppercase italic">Helsinki & Rovaniemi</h1>
                     <p class="text-emerald-400 font-bold tracking-[0.3em] uppercase text-sm mb-6">by Khaine</p>
                 </div>
-                <!-- FIXED: added modalId argument -->
                 <button onclick="toggleModal('helsinkiModal')" class="absolute top-6 right-6 text-3xl hover:text-emerald-300 transition z-20 bg-black/20 w-12 h-12 rounded-full">&times;</button>
             </header>
 
@@ -929,6 +1059,136 @@
             </div>
         </div>
     </div>
+    
+    <!-- Modal: Kit di Viaggio (INTEGRATO CON KIT BASE VIAGGIO) -->
+    <div id="kitViaggioModal" aria-hidden="true">
+        <!-- Main container with dark background from kit -->
+        <div class="max-w-6xl mx-auto my-6 md:my-12 bg-[#020617] rounded-3xl overflow-hidden shadow-2xl relative border border-[#f87171]/30">
+            
+            <!-- Close button (Red accent) -->
+            <button onclick="toggleModal('kitViaggioModal')" class="absolute top-6 right-6 text-3xl text-[#f87171] hover:text-white transition z-20 bg-black/20 w-12 h-12 rounded-full">&times;</button>
+
+            <!-- Scrollable Content Area -->
+            <div class="overflow-y-auto max-h-[85vh] text-[#f1f5f9] kit-font-inter">
+                
+                <!-- Header (From Kit file) -->
+                <header class="kit-header-bg py-24 px-6 text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold text-[#f87171] mb-4">Kit Base del Viaggiatore</h1>
+                    <p class="kit-font-mono text-[#94a3b8] text-lg">Equipaggiamento analitico per l'esplorazione moderna</p>
+                </header>
+
+                <div class="container mx-auto px-6 py-12 max-w-5xl">
+                    <!-- Intro -->
+                    <p class="text-center max-w-3xl mx-auto mb-16 text-[#94a3b8] text-lg leading-relaxed">
+                        Viaggiare con intelligenza significa eliminare il superfluo. Ogni oggetto in questo kit è stato selezionato per la sua utilità, durabilità e capacità di ridurre lo stress logistico.
+                    </p>
+
+                    <!-- Grid -->
+                    <div class="kit-grid">
+                        <!-- Zaino -->
+                        <div class="kit-item">
+                            <div class="kit-icon"><i class="fas fa-suitcase"></i></div>
+                            <h3 class="text-2xl font-bold mb-4 text-[#f1f5f9]">Carry-on Tecnico</h3>
+                            <p class="text-[#94a3b8] mb-6 flex-grow">Lo zaino è il prolungamento del corpo. Un design minimalista con scomparti dedicati previene la disorganizzazione cronica e velocizza i controlli di sicurezza.</p>
+                            <div class="kit-specs">
+                                <ul>
+                                    <li><span>Volume:</span> 35L - 40L</li>
+                                    <li><span>Materiale:</span> Cordura 1000D</li>
+                                    <li><span>Focus:</span> Laptop protection</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tazza Termica -->
+                        <div class="kit-item">
+                            <div class="kit-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                            <h3 class="text-2xl font-bold mb-4 text-[#f1f5f9]">Vessel Termico</h3>
+                            <p class="text-[#94a3b8] mb-6 flex-grow">Idratazione costante. Fondamentale per mantenere l'omeostasi e supportare il protocollo di biohacking mantenendo i liquidi alla temperatura ideale.</p>
+                            <div class="kit-specs">
+                                <ul>
+                                    <li><span>Capacità:</span> 500ml / 17oz</li>
+                                    <li><span>Isolamento:</span> Vacuum Double Wall</li>
+                                    <li><span>Durata:</span> 12h Caldo / 24h Freddo</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Compressione Spazio -->
+                        <div class="kit-item">
+                            <div class="kit-icon"><i class="fa-solid fa-box-archive"></i></div>
+                            <h3 class="text-2xl font-bold mb-4 text-[#f1f5f9]">Vacuum Storage System</h3>
+                            <p class="text-[#94a3b8] mb-6 flex-grow">Ottimizzazione radicale del volume. Sacchetti sottovuoto rinforzati per separare ermeticamente i capi puliti da quelli sporchi, riducendo l'ingombro fino al 75%.</p>
+                            <div class="kit-specs">
+                                <ul>
+                                    <li><span>Componenti:</span> Clean/Dirty Bags</li>
+                                    <li><span>Compressione:</span> Mini Pump USB</li>
+                                    <li><span>Vantaggio:</span> Odor control</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tech Organizer & Power -->
+                        <div class="kit-item">
+                            <div class="kit-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <h3 class="text-2xl font-bold mb-4 text-[#f1f5f9]">Power & Adapter</h3>
+                            <p class="text-[#94a3b8] mb-6 flex-grow">Gestione energetica totale. Include un adattatore universale all-in-one per eliminare le incompatibilità geografiche e una powerbank ad alta efficienza.</p>
+                            <div class="kit-specs">
+                                <ul>
+                                    <li><span>Adattatore:</span> Universal Worldwide</li>
+                                    <li><span>Powerbank:</span> 10.000 mAh PD</li>
+                                    <li><span>Porte:</span> Multi-USB (GaN Tech)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Diario/Documenti -->
+                        <div class="kit-item">
+                            <div class="kit-icon"><i class="fa-solid fa-passport"></i></div>
+                            <h3 class="text-2xl font-bold mb-4 text-[#f1f5f9]">Document Shelter</h3>
+                            <p class="text-[#94a3b8] mb-6 flex-grow">La sicurezza dei dati e dei documenti fisici. Una protezione RFID compatta per passaporto, carte e le tue note analitiche sul viaggio.</p>
+                            <div class="kit-specs">
+                                <ul>
+                                    <li><span>Protezione:</span> RFID Blocking</li>
+                                    <li><span>Chiusura:</span> Waterproof Zip</li>
+                                    <li><span>Extra:</span> Spazio Penna Tecnica</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Protezione Agenti Atmosferici -->
+                        <div class="kit-item">
+                            <div class="kit-icon"><i class="fa-solid fa-cloud-showers-water"></i></div>
+                            <h3 class="text-2xl font-bold mb-4 text-[#f1f5f9]">Weather Shield System</h3>
+                            <p class="text-[#94a3b8] mb-6 flex-grow">Protezione integrale contro pioggia e vento. Un set composto da guscio ultraleggero (K-Way) e pantaloni tecnici per garantire isolamento e comfort.</p>
+                            <div class="kit-specs">
+                                <ul>
+                                    <li><span>Set:</span> K-Way + Pants</li>
+                                    <li><span>Peso:</span> < 400g (Totale)</li>
+                                    <li><span>Materiale:</span> Tech Ripstop</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Philosophy Box -->
+                    <div class="kit-philosophy mt-20 p-10 rounded-2xl text-center">
+                        <p class="text-xl md:text-2xl italic mb-4 text-[#f1f5f9]">"L'attrezzatura scadente è una distrazione. L'attrezzatura eccellente è invisibile: ti permette di concentrarti solo sull'esperienza e sul tuo equilibrio interiore."</p>
+                        <span class="kit-font-mono text-[#94a3b8]">— Khaine's Gear Logic</span>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="border-t border-[#1e293b] p-8 text-center text-[#94a3b8] text-sm bg-[#020617]">
+                    <p>&copy; 2026 Khaine | The Traveller. Equipaggiati per durare.</p>
+                    <div class="mt-6">
+                        <button onclick="toggleModal('kitViaggioModal')" class="px-10 py-3 border border-[#f87171] text-[#f87171] rounded-full font-bold uppercase tracking-widest hover:bg-[#f87171] hover:text-white transition duration-300">
+                            Chiudi Kit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-slate-950 text-slate-500 py-16 px-6">
@@ -940,74 +1200,181 @@
                 &copy; 2026 Khaine | The Traveller
             </div>
         </div>
-                <div class="max-w-4xl mx-auto text-center border-t border-slate-800 pt-8">
+        <div class="max-w-4xl mx-auto text-center border-t border-slate-800 pt-8">
             <p class="text-[10px] md:text-xs leading-relaxed opacity-60 max-w-2xl mx-auto italic">
                 I contenuti di questo sito hanno scopo informativo e di consulenza creativa. Non si effettuano vendite di pacchetti turistici o servizi di intermediazione.
             </p>
         </div>
-
     </footer>
 
-    <!-- Modal: Link Utili -->
+    <!-- MODAL PRINCIPALE: LINK UTILI (AGGIORNATO CON CONTENUTO LINK 2.0) -->
     <div id="linkUtiliModal" aria-hidden="true">
-        <div class="max-w-4xl mx-auto my-12 bg-white rounded-3xl overflow-hidden shadow-2xl relative">
-            <!-- Header -->
-            <div class="bg-blue-600 p-8 text-white text-center relative">
-                <button onclick="toggleModal('linkUtiliModal')" class="absolute top-6 right-6 text-3xl hover:text-blue-200 transition z-20 bg-black/20 w-12 h-12 rounded-full">&times;</button>
-                <h1 class="text-3xl md:text-4xl font-bold mb-2">Risorse per il Viaggiatore</h1>
-                <p class="text-blue-100 italic">"Il mondo è un libro, e quelli che non viaggiano ne leggono solo una pagina. (Sant'Agostino)"</p>
-            </div>
+        <!-- Background cambiato a scuro (#0f172a) per adattarsi allo stile Link 2.0 -->
+        <div class="max-w-6xl mx-auto my-6 md:my-12 bg-[#0f172a] rounded-3xl overflow-hidden shadow-2xl relative border border-[#c5a059]/30">
+            
+            <!-- Pulsante chiudi aggiornato al color oro -->
+            <button onclick="toggleModal('linkUtiliModal')" class="absolute top-6 right-6 text-3xl text-[#c5a059] hover:text-white transition z-20 bg-black/20 w-12 h-12 rounded-full">&times;</button>
 
-            <div class="p-6 md:p-10 space-y-10">
+            <!-- Contenuto Link 2.0 -->
+            <div class="p-8 md:p-12 l2-font-inter overflow-y-auto max-h-[85vh]">
+                <header class="text-center mb-16">
+                    <h1 class="text-4xl md:text-6xl font-bold l2-gold-gradient mb-4 uppercase l2-font-cinzel">Risorse del Viaggiatore</h1>
+                    <div class="w-24 h-1 bg-gradient-to-r from-transparent via-[#c5a059] to-transparent mx-auto mb-6"></div>
+                </header>
+
+                <main class="space-y-20">
+                    
+                    <!-- SEZIONE TOUR OPERATOR -->
+                    <section>
+                        <h2 class="text-xl font-bold tracking-widest uppercase text-[#c5a059] mb-8 border-l-4 border-[#c5a059] pl-4 l2-font-cinzel">Tour Operator</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Boscolo -->
+                            <div class="l2-card-container p-6 rounded-xl flex flex-col items-center text-center">
+                                <span class="text-white font-bold text-lg mb-4">Boscolo</span>
+                                <div class="flex space-x-3">
+                                    <a href="https://www.boscolo.com" target="_blank" class="px-4 py-1.5 text-xs border border-gray-600 rounded text-gray-400 hover:text-white hover:border-white transition">Sito</a>
+                                    <button onclick="openDetailModal('Boscolo', 'Viaggi guidati di alto livello con itinerari culturali ricercati e accompagnatori esperti.', 'https://www.boscolo.com', 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&q=80&w=800')" class="text-[#c5a059] hover:scale-110 transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Giver -->
+                            <div class="l2-card-container p-6 rounded-xl flex flex-col items-center text-center">
+                                <span class="text-white font-bold text-lg mb-4">Giver Viaggi</span>
+                                <div class="flex space-x-3">
+                                    <a href="https://www.giverviaggi.com" target="_blank" class="px-4 py-1.5 text-xs border border-gray-600 rounded text-gray-400 hover:text-white hover:border-white transition">Sito</a>
+                                    <button onclick="openDetailModal('Giver Viaggi', 'Specialisti assoluti per il Nord Europa, crociere fluviali e viaggi in Lapponia.', 'https://www.giverviaggi.com', 'https://images.unsplash.com/photo-1483347756197-71ef80e95f73?auto=format&fit=crop&q=80&w=800')" class="text-[#c5a059] hover:scale-110 transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Quality Group (Macchu Picchu) -->
+                            <div class="l2-card-container p-6 rounded-xl flex flex-col items-center text-center">
+                                <span class="text-white font-bold text-lg mb-4">Quality Group</span>
+                                <div class="flex space-x-3">
+                                    <a href="https://www.qualitygroup.it" target="_blank" class="px-4 py-1.5 text-xs border border-gray-600 rounded text-gray-400 hover:text-white hover:border-white transition">Sito</a>
+                                    <button onclick="openDetailModal('Quality Group', 'Un consorzio di specialisti che offre viaggi su misura in ogni continente del mondo.', 'https://www.qualitygroup.it', 'https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&q=80&w=800')" class="text-[#c5a059] hover:scale-110 transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- SEZIONE VOLI -->
+                    <section>
+                        <h2 class="text-xl font-bold tracking-widest uppercase text-[#c5a059] mb-8 border-l-4 border-[#c5a059] pl-4 l2-font-cinzel">Voli e Trasporti</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Skyscanner -->
+                            <div class="l2-card-container p-6 rounded-xl flex justify-between items-center">
+                                <span class="text-white font-bold uppercase tracking-tight">Skyscanner</span>
+                                <button onclick="openDetailModal('Skyscanner', 'Il motore di ricerca più potente per confrontare i prezzi dei voli di tutte le compagnie mondiali.', 'https://www.skyscanner.it', 'https://images.unsplash.com/photo-1464039397811-476f652a343b?auto=format&fit=crop&q=80&w=800')" class="p-2 bg-gray-700/50 rounded-lg text-[#c5a059] hover:bg-[#c5a059] hover:text-white transition">
+                                    INFO
+                                </button>
+                            </div>
+                            <!-- Google Flights -->
+                            <div class="l2-card-container p-6 rounded-xl flex justify-between items-center">
+                                <span class="text-white font-bold uppercase tracking-tight">Google Flights</span>
+                                <button onclick="openDetailModal('Google Flights', 'Strumento rapido di Google per monitorare le variazioni di prezzo e trovare le date più convenienti.', 'https://google.com/flights', 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&q=80&w=800')" class="p-2 bg-gray-700/50 rounded-lg text-[#c5a059] hover:bg-[#c5a059] hover:text-white transition">
+                                    INFO
+                                </button>
+                            </div>
+                            <!-- Ryanair -->
+                            <div class="l2-card-container p-6 rounded-xl flex justify-between items-center">
+                                <span class="text-white font-bold uppercase tracking-tight">Ryanair</span>
+                                <button onclick="openDetailModal('Ryanair', 'La compagnia aerea low cost per eccellenza per muoversi velocemente in tutta Europa.', 'https://www.ryanair.com', 'https://images.unsplash.com/photo-1556388158-158ea5ccacbd?auto=format&fit=crop&q=80&w=800')" class="p-2 bg-gray-700/50 rounded-lg text-[#c5a059] hover:bg-[#c5a059] hover:text-white transition">
+                                    INFO
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- SEZIONE HOTEL -->
+                    <section>
+                        <h2 class="text-xl font-bold tracking-widest uppercase text-[#c5a059] mb-8 border-l-4 border-[#c5a059] pl-4 l2-font-cinzel">Alloggi</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                            <div class="l2-card-container p-4 rounded-xl flex flex-col items-center">
+                                <span class="text-white font-bold mb-3">Booking</span>
+                                <button onclick="openDetailModal('Booking.com', 'Migliaia di strutture con recensioni verificate e opzioni di cancellazione flessibili.', 'https://www.booking.com', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800')" class="text-xs bg-[#c5a059]/20 text-[#c5a059] px-3 py-1 rounded hover:bg-[#c5a059] hover:text-white transition">INFO</button>
+                            </div>
+                            <div class="l2-card-container p-4 rounded-xl flex flex-col items-center">
+                                <span class="text-white font-bold mb-3">Airbnb</span>
+                                <button onclick="openDetailModal('Airbnb', 'Case uniche e alloggi locali per vivere un\'esperienza autentica in ogni destinazione.', 'https://www.airbnb.it', 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=800')" class="text-xs bg-[#c5a059]/20 text-[#c5a059] px-3 py-1 rounded hover:bg-[#c5a059] hover:text-white transition">INFO</button>
+                            </div>
+                            <div class="l2-card-container p-4 rounded-xl flex flex-col items-center">
+                                <span class="text-white font-bold mb-3">Expedia</span>
+                                <button onclick="openDetailModal('Expedia', 'Pacchetti completi volo+hotel per pianificare il viaggio in totale comodità.', 'https://www.expedia.it', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800')" class="text-xs bg-[#c5a059]/20 text-[#c5a059] px-3 py-1 rounded hover:bg-[#c5a059] hover:text-white transition">INFO</button>
+                            </div>
+                            <div class="l2-card-container p-4 rounded-xl flex flex-col items-center">
+                                <span class="text-white font-bold mb-3">Trivago</span>
+                                <button onclick="openDetailModal('Trivago', 'Compara i prezzi degli hotel su centinaia di siti per trovare l\'offerta migliore.', 'https://www.trivago.it', 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=800')" class="text-xs bg-[#c5a059]/20 text-[#c5a059] px-3 py-1 rounded hover:bg-[#c5a059] hover:text-white transition">INFO</button>
+                            </div>
+                            <div class="l2-card-container p-4 rounded-xl flex flex-col items-center">
+                                <span class="text-white font-bold mb-3">Kayak</span>
+                                <button onclick="openDetailModal('Kayak', 'Strumento versatile per confrontare hotel, auto e voli in un\'unica ricerca.', 'https://www.kayak.it', 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=800')" class="text-xs bg-[#c5a059]/20 text-[#c5a059] px-3 py-1 rounded hover:bg-[#c5a059] hover:text-white transition">INFO</button>
+                            </div>
+                        </div>
+                    </section>
+                </main>
                 
-                <!-- Sezione Tour Operator -->
-                <section>
-                    <div class="flex items-center mb-4">
-                        <span class="text-2xl mr-2">🌍</span>
-                        <h2 class="text-2xl font-semibold text-blue-800 border-b-2 border-blue-200 w-full">Tour Operator</h2>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <a href="https://www.boscolo.com" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Boscolo</a>
-                        <a href="https://www.giverviaggi.com" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Giver Viaggi</a>
-                        <a href="https://www.qualitygroup.it" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Quality Group</a>
-                    </div>
-                </section>
-
-                <!-- Sezione Voli e Monitoraggio -->
-                <section>
-                    <div class="flex items-center mb-4">
-                        <span class="text-2xl mr-2">✈️</span>
-                        <h2 class="text-2xl font-semibold text-blue-800 border-b-2 border-blue-200 w-full">Voli e Monitoraggio</h2>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <a href="https://www.skyscanner.it" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Skyscanner</a>
-                        <a href="https://www.google.com/flights" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Google Flights</a>
-                        <a href="https://www.ryanair.com" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Ryanair</a>
-                    </div>
-                </section>
-
-                <!-- Sezione Hotel e Accomodamenti -->
-                <section>
-                    <div class="flex items-center mb-4">
-                        <span class="text-2xl mr-2">🏨</span>
-                        <h2 class="text-2xl font-semibold text-blue-800 border-b-2 border-blue-200 w-full">Hotel e Accomodamenti</h2>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <a href="https://www.kayak.it" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Kayak</a>
-                        <a href="https://www.trivago.it" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Trivago</a>
-                        <a href="https://www.booking.com" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Booking.com</a>
-                        <a href="https://www.expedia.it" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Expedia</a>
-                        <a href="https://www.airbnb.it" target="_blank" class="p-4 bg-blue-50 rounded-lg text-center font-medium text-blue-700 border border-blue-100 hover:bg-blue-100 transition">Airbnb</a>
-                    </div>
-                </section>
+                <div class="flex justify-center pt-20 pb-12">
+                     <button onclick="toggleModal('linkUtiliModal')" class="px-10 py-4 border border-[#c5a059] text-[#c5a059] rounded-full font-bold uppercase tracking-widest hover:bg-[#c5a059] hover:text-white transition duration-300">
+                        Chiudi Finestra
+                    </button>
+                </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Footer -->
-            <div class="p-8 bg-slate-50 border-t text-right">
-                <button onclick="toggleModal('linkUtiliModal')" class="bg-slate-900 text-white px-6 py-3 rounded-full font-bold hover:bg-emerald-600 transition">Chiudi</button>
+    <!-- NUOVO: Modal Popup Boscolo (Legacy) -->
+    <div id="boscoloModal" aria-hidden="true">
+        <div class="max-w-lg mx-auto my-24 bg-slate-900 text-white rounded-3xl overflow-hidden shadow-2xl relative border border-emerald-500/30">
+            <div class="relative p-8 text-center">
+                <button onclick="toggleModal('boscoloModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white transition text-2xl">&times;</button>
+                
+                <div class="mb-6">
+                    <img src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?auto=format&fit=crop&q=80&w=400" alt="Boscolo" class="w-full h-32 object-cover rounded-2xl mb-4 opacity-80">
+                    <h2 class="text-3xl font-bold italic mb-2">Boscolo Tour</h2>
+                    <div class="h-1 w-16 bg-emerald-500 mx-auto rounded-full"></div>
+                </div>
+
+                <p class="text-slate-300 leading-relaxed mb-8 text-sm italic">
+                    "Eccellenza italiana nei viaggi guidati. Li ho inseriti nei miei link utili perché offrono itinerari curati nei minimi dettagli, ideali per chi cerca cultura e comfort senza pensieri. Le loro guide sono tra le migliori in circolazione."
+                </p>
+
+                <div class="flex flex-col gap-3">
+                    <a href="https://www.boscolo.com" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-full font-bold uppercase tracking-widest transition-all">
+                        Vai al Sito Ufficiale
+                    </a>
+                    <button onclick="toggleModal('boscoloModal')" class="text-slate-400 text-sm hover:text-white transition py-2">
+                        Torna ai Link Utili
+                    </button>
+                </div>
             </div>
-            <div class="bg-gray-50 p-4 text-center text-gray-500 text-sm border-t border-gray-100">
-                &copy; 2026 Khaine The Traveller - Link Utili
+        </div>
+    </div>
+
+    <!-- POPUP MODALE DETTAGLIO LINK 2.0 (MODAL DI SECONDO LIVELLO) -->
+    <div id="link2DetailModal" onclick="closeDetailModal()">
+        <div class="l2-modal-content rounded-3xl overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+            <!-- Immagine Dinamica -->
+            <div id="l2ModalImage" class="h-44 w-full bg-cover bg-center relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-[var(--card-bg)] to-transparent"></div>
+            </div>
+            
+            <!-- Contenuto -->
+            <div class="p-8">
+                <h3 id="l2ModalTitle" class="text-2xl font-bold l2-gold-gradient mb-4 uppercase l2-font-cinzel">Titolo</h3>
+                <p id="l2ModalDesc" class="text-gray-300 mb-8 leading-relaxed l2-font-inter">Descrizione...</p>
+                
+                <!-- PULSANTE VAI AL SITO -->
+                <a id="l2ModalLink" href="#" target="_blank" class="inline-block w-full py-4 bg-[#c5a059] text-white font-bold rounded-xl text-center uppercase tracking-widest shadow-lg hover:brightness-110 active:scale-95 transition-all">
+                    Vai al sito ufficiale
+                </a>
+                
+                <button onclick="closeDetailModal()" class="w-full mt-4 text-xs text-gray-500 uppercase tracking-widest hover:text-white transition">
+                    Chiudi finestra
+                </button>
             </div>
         </div>
     </div>
@@ -1023,12 +1390,38 @@
                 }
                 
                 modal.classList.toggle('modal-active');
-                document.body.style.overflow = modal.classList.contains('modal-active') ? 'hidden' : 'auto';
+                
+                // Gestione overflow del body: se c'è ALMENO un modal attivo, blocca lo scroll
+                const anyModalActive = document.querySelector('.modal-active');
+                document.body.style.overflow = anyModalActive ? 'hidden' : 'auto';
             }
         }
 
+        // --- JS INTEGRATO DA LINK 2.0 ---
+        const detailModal = document.getElementById('link2DetailModal');
+        const l2mTitle = document.getElementById('l2ModalTitle');
+        const l2mDesc = document.getElementById('l2ModalDesc');
+        const l2mLink = document.getElementById('l2ModalLink');
+        const l2mImg = document.getElementById('l2ModalImage');
+
+        function openDetailModal(title, desc, url, imgUrl) {
+            l2mTitle.innerText = title;
+            l2mDesc.innerText = desc;
+            
+            l2mLink.setAttribute('href', url);
+            l2mImg.style.backgroundImage = `url('${imgUrl}')`;
+            
+            detailModal.style.display = 'flex';
+            // Non cambiamo overflow qui perché è già gestito dal modal padre
+        }
+
+        function closeDetailModal() {
+            detailModal.style.display = 'none';
+        }
+        // ---------------------------------
+
         document.addEventListener('DOMContentLoaded', function () {
-            // Gestisci il dropdown menu al click
+            // Gestione Menu Dropdown (codice originale mantenuto)
             const dropdownBtn = document.getElementById('dropdownMenuButton');
             const dropdownMenu = document.getElementById('dropdownMenu');
 
@@ -1037,27 +1430,17 @@
                     e.stopPropagation();
                     dropdownMenu.classList.toggle('hidden');
                 });
-
-                // Chiudi cliccando su una voce del menu
                 const dropdownItems = dropdownMenu.querySelectorAll('a, button');
                 dropdownItems.forEach(item => {
-                    item.addEventListener('click', function () {
-                        dropdownMenu.classList.add('hidden');
-                    });
+                    item.addEventListener('click', function () { dropdownMenu.classList.add('hidden'); });
                 });
-
-                // Chiudi cliccando fuori dal menu
                 document.addEventListener('click', function (e) {
                     if (!dropdownMenu.contains(e.target) && !dropdownBtn.contains(e.target) && !dropdownMenu.classList.contains('hidden')) {
                         dropdownMenu.classList.add('hidden');
                     }
                 });
-
-                // Chiudi con Escape
                 document.addEventListener('keydown', function (e) {
-                    if (e.key === 'Escape' && !dropdownMenu.classList.contains('hidden')) {
-                        dropdownMenu.classList.add('hidden');
-                    }
+                    if (e.key === 'Escape' && !dropdownMenu.classList.contains('hidden')) { dropdownMenu.classList.add('hidden'); }
                 });
             }
 
@@ -1067,51 +1450,27 @@
             if (btn && menu) {
                 btn.addEventListener('click', function (e) {
                     const isHidden = menu.classList.contains('hidden');
-                    if (isHidden) {
-                        menu.classList.remove('hidden');
-                        btn.setAttribute('aria-expanded', 'true');
-                    } else {
-                        menu.classList.add('hidden');
-                        btn.setAttribute('aria-expanded', 'false');
-                    }
+                    if (isHidden) { menu.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); } 
+                    else { menu.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
                 });
-
-                // Chiudi cliccando fuori dal menu
                 document.addEventListener('click', function (e) {
                     if (!menu.contains(e.target) && !btn.contains(e.target) && !menu.classList.contains('hidden')) {
-                        menu.classList.add('hidden');
-                        btn.setAttribute('aria-expanded', 'false');
+                        menu.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false');
                     }
                 });
-
-                // Chiudi con Escape
-                document.addEventListener('keydown', function (e) {
-                    if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
-                        menu.classList.add('hidden');
-                        btn.setAttribute('aria-expanded', 'false');
-                    }
-                });
-
-                // Nascondi il menu quando si ridimensiona a desktop (>= md)
-                const mq = window.matchMedia('(min-width: 768px)');
-                const onChange = (e) => {
-                    if (e.matches) {
-                        menu.classList.add('hidden');
-                        btn.setAttribute('aria-expanded', 'false');
-                    }
-                };
-                if (mq.addEventListener) mq.addEventListener('change', onChange);
-                else mq.addListener(onChange);
             }
 
             // Chiudi i modal cliccando fuori dal contenuto
             document.addEventListener('click', function (e) {
-                const modals = document.querySelectorAll('#itinerarioModal, #helsinkiModal, #disclaimerModal, #copeModal, #chiSonoModal, #blogModal, #contattiModal, #linkUtiliModal');
+                // Aggiunto boscoloModal e kitViaggioModal alla lista
+                const modals = document.querySelectorAll('#itinerarioModal, #helsinkiModal, #disclaimerModal, #copeModal, #chiSonoModal, #blogModal, #contattiModal, #linkUtiliModal, #boscoloModal, #kitViaggioModal');
                 modals.forEach(modal => {
                     if (modal.classList.contains('modal-active') && e.target === modal) {
                         modal.scrollTop = 0;
                         modal.classList.remove('modal-active');
-                        document.body.style.overflow = 'auto';
+                        // Ricontrolla se ci sono altri modal aperti prima di riabilitare lo scroll
+                        const anyModalActive = document.querySelector('.modal-active');
+                        document.body.style.overflow = anyModalActive ? 'hidden' : 'auto';
                     }
                 });
             });
@@ -1119,7 +1478,21 @@
             // Chiudi i modal con il tasto Escape
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape') {
-                    const modals = document.querySelectorAll('#itinerarioModal, #helsinkiModal, #disclaimerModal, #copeModal, #chiSonoModal, #blogModal, #contattiModal, #linkUtiliModal');
+                    // Controllo Prioritario: se il popup di dettaglio di Link2.0 è aperto, chiudi SOLO quello
+                    const detailModal = document.getElementById('link2DetailModal');
+                    if (detailModal && detailModal.style.display === 'flex') {
+                        closeDetailModal();
+                        return;
+                    }
+
+                    // Chiudi prima il modal con z-index più alto (Boscolo legacy) se aperto
+                    const boscolo = document.getElementById('boscoloModal');
+                    if (boscolo && boscolo.classList.contains('modal-active')) {
+                        toggleModal('boscoloModal');
+                        return; // Ferma qui per non chiudere anche quello sotto
+                    }
+
+                    const modals = document.querySelectorAll('#itinerarioModal, #helsinkiModal, #disclaimerModal, #copeModal, #chiSonoModal, #blogModal, #contattiModal, #linkUtiliModal, #kitViaggioModal');
                     modals.forEach(modal => {
                         if (modal.classList.contains('modal-active')) {
                             modal.scrollTop = 0;
