@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+    --primary: #0f172a;
+    --accent: #10b981;
+    /* VARIABILI LINK 2.0 */
+    --primary-gold: #c5a059;
+    --dark-bg: #0f172a;
+    --card-bg: #1e293b;
+    --modal-overlay: rgba(7, 10, 18, 0.95);
+    /* VARIABILI KIT VIAGGIO */
+    --kit-bg-dark: #020617;
+    --kit-bg-card: #0f172a;
+    --kit-primary: #f87171;
+    --kit-text-main: #f1f5f9;
+    --kit-text-muted: #94a3b8;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+.hero-gradient {
+    background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)),
+        url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+}
+
+.nav-glass {
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.card-zoom:hover img {
+    transform: scale(1.1);
+}
+
+/* Stili per le modali */
+#itinerarioModal,
+#helsinkiModal,
+#disclaimerModal,
+#copeModal,
+#chiSonoModal,
+#blogModal,
+#contattiModal,
+#linkUtiliModal,
+#kitViaggioModal,
+#montefeltroModal,
+#microModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(15, 23, 42, 0.95);
+    overflow-y: auto;
+}
+
+#ritmoModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(15, 23, 42, 0.95);
+    overflow-y: auto;
+}
+
+/* STILI SPECIFICI LINK 2.0 INTEGRATI */
+.l2-font-cinzel {
+    font-family: 'Cinzel', serif;
+}
+
+.l2-font-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+.l2-gold-gradient {
+    background: linear-gradient(135deg, #c5a059 0%, #f1d592 50%, #c5a059 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.l2-card-container {
+    background: var(--card-bg);
+    border: 1px solid rgba(197, 160, 89, 0.1);
+    transition: all 0.3s ease;
+}
+
+.l2-card-container:hover {
+    border-color: var(--primary-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* STILI SPECIFICI KIT VIAGGIO INTEGRATI */
+.kit-font-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+.kit-font-mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.kit-header-bg {
+    background: linear-gradient(rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.9)),
+        url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+}
+
+.kit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.kit-item {
+    background: var(--kit-bg-card);
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #1e293b;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.kit-item:hover {
+    border-color: var(--kit-primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(248, 113, 113, 0.1);
+}
+
+.kit-icon {
+    font-size: 2rem;
+    color: var(--kit-primary);
+    margin-bottom: 15px;
+}
+
+.kit-specs {
+    background: #1e293b;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--kit-text-muted);
+    margin-top: auto;
+}
+
+.kit-specs li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.kit-specs li span:first-child {
+    color: var(--kit-primary);
+}
+
+.kit-philosophy {
+    background: rgba(248, 113, 113, 0.05);
+    border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+/* Modal di secondo livello per i dettagli Link 2.0 */
+#link2DetailModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    /* Superiore al modale principale */
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(12px);
+    background: var(--modal-overlay);
+}
+
+.l2-modal-content {
+    background: var(--card-bg);
+    border: 1px solid var(--primary-gold);
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    pointer-events: auto;
+}
+
+/* NUOVO: Stile specifico per il popup di secondo livello (Boscolo - Mantenuto per compatibilità legacy se servisse, ma ora c'è quello nuovo) */
+#boscoloModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    background: rgba(15, 23, 42, 0.98);
+    overflow-y: auto;
+}
+
+.modal-active {
+    display: block !important;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.attraction-link {
+    color: #10b981;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-bottom: 1px dashed transparent;
+}
+
+.attraction-link:hover {
+    border-bottom-color: #34d399;
+    color: #34d399;
+}
+
+.day-card {
+    border-left: 3px solid #10b981;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.day-card::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    background: #10b981;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+/* Stili specifici per Helsinki importati */
+.helsinki-content {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.day-box {
+    border-left: 5px solid #1e293b;
+    transition: all 0.3s ease;
+}
+
+.day-box:hover {
+    background-color: #f1f5f9;
+    transform: scale(1.005);
+}
+
+.cost-badge {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
