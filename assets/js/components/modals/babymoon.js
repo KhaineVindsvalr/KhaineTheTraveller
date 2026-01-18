@@ -351,7 +351,7 @@ window.babymoonModalHTML = `
                         <p class="text-gray-400 text-xs italic mb-4 leading-relaxed">
                             Disclaimer medico: I contenuti di questo blog hanno solo valore informativo. Prima di intraprendere qualsiasi spostamento, consulta il tuo medico specialista.
                         </p>
-                        <p class="text-[10px] text-gray-300 uppercase tracking-widest">© 2026 Blog di Viaggi. Tutti i diritti riservati.</p>
+                        <p class="text-[10px] text-gray-300 uppercase tracking-widest">© 2026 Khaine | The Traveller. Tutti i diritti riservati.</p>
                     </div>
 
                      <!-- Fixed Bottom Close Button (Light Theme Adapted) -->
