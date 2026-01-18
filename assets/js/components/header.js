@@ -70,6 +70,7 @@ window.headerHTML = `
                             <a href="#" onclick="toggleModal('ritmoModal'); return false;" class="block text-slate-400 hover:text-emerald-400 text-xs py-1">Ritmo</a>
                             <a href="#" onclick="toggleModal('vigoreModal'); return false;" class="block text-slate-400 hover:text-emerald-400 text-xs py-1">Vigore</a>
                             <a href="#" onclick="toggleModal('venereModal'); return false;" class="block text-slate-400 hover:text-emerald-400 text-xs py-1">Venere</a>
+                            <a href="#" onclick="toggleModal('babymoonModal'); return false;" class="block text-slate-400 hover:text-emerald-400 text-xs py-1">Babymoon</a>
                         </div>
                     </div>
 
