@@ -47,10 +47,9 @@ window.headerHTML = `
                 </a>
             </div>
 
-            <!-- Social Icons (Desktop Only) -->
+            <!-- Social Icons (Desktop Only) - REMOVED -->
             <div class="hidden md:flex items-center gap-4">
-                <a href="https://www.facebook.com/profile.php?id=61586390626048" class="text-white hover:text-emerald-400 transition" target="_blank"><i class="fab fa-facebook text-xl"></i></a>
-                <a href="https://www.instagram.com/khaine_the_traveller/" class="text-white hover:text-emerald-400 transition" target="_blank"><i class="fab fa-instagram text-xl"></i></a>
+                <!-- Social links removed as per request -->
             </div>
             
             <div class="relative md:hidden">
@@ -85,6 +84,11 @@ window.headerHTML = `
                     <a href="#" onclick="toggleModal('chiSonoModal'); return false;" class="block hover:text-emerald-400 transition">Chi sono</a>
                     <a href="#" onclick="toggleModal('contattiModal'); return false;" class="block hover:text-emerald-400 transition">Contatti</a>
                     <button onclick="toggleModal('disclaimerModal')" class="text-left hover:text-emerald-400 transition">Disclaimer</button>
+                    
+                    <!-- Social Icons (Mobile) - REMOVED -->
+                    <div class="hidden pt-4 mt-2 border-t border-slate-700 items-center gap-6">
+                         <!-- Social links removed as per request -->
+                    </div>
                 </div>
             </div>
             </div>

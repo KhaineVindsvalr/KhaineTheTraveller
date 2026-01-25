@@ -6,8 +6,12 @@ window.footerHTML = `
             <div class="flex items-center gap-4 mb-8 md:mb-0">
                 <div class="text-2xl font-bold text-white tracking-tighter whitespace-nowrap">KHAINE | <span class="text-emerald-400 font-bold">The Traveller</span></div>
             </div>
-            <div class="text-xs uppercase tracking-widest text-center md:text-right">
-                &copy; 2026 Khaine | The Traveller
+            <div class="flex flex-col md:flex-row items-center gap-6 text-xs uppercase tracking-widest">
+                <span>&copy; 2026 Khaine | The Traveller</span>
+                <div class="flex items-center gap-4 text-white">
+                    <a href="https://www.facebook.com/profile.php?id=61586390626048" class="hover:text-emerald-400 transition" target="_blank"><i class="fab fa-facebook text-lg"></i></a>
+                    <a href="https://www.instagram.com/khaine_the_traveller/" class="hover:text-emerald-400 transition" target="_blank"><i class="fab fa-instagram text-lg"></i></a>
+                </div>
             </div>
         </div>
         <div class="max-w-4xl mx-auto text-center border-t border-slate-800 pt-8">
