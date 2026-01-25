@@ -4,17 +4,20 @@ window.babymoonModalHTML = `
 <div id="babymoonModal" aria-hidden="true" style="display: none; position: fixed; inset: 0; z-index: 200; background: rgba(15, 23, 42, 0.95); overflow-y: auto;">
     
     <!-- Close Button (High Visibility - Adapted for Dark Backdrop) -->
-    <button onclick="toggleModal('babymoonModal')" 
-            class="fixed top-4 right-4 md:top-6 md:right-6 text-white hover:text-teal-400 transition z-[210] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm rounded-full w-12 h-12 border border-white/10 shadow-lg"
-            aria-label="Chiudi Modal">
-        <span class="text-3xl font-light leading-none" style="margin-top: -4px;">&times;</span>
-    </button>
+    <!-- Close Button Removed (Moved Inside) -->
 
     <!-- Modal Content Container -->
     <div class="min-h-screen px-0 md:px-4 py-0 md:py-12 flex items-center justify-center">
         
         <!-- Inner Card (Simulating User Body - Light Theme Preserved) -->
         <div class="w-full max-w-6xl bg-gray-50 text-gray-800 leading-relaxed md:rounded-3xl overflow-hidden shadow-2xl border border-slate-700 relative mb-0 md:mb-12">
+            
+            <!-- Close Button (Moved Inside) -->
+            <button onclick="toggleModal('babymoonModal')" 
+                    class="absolute top-3 right-3 z-[200] text-gray-500 hover:text-teal-600 transition flex items-center justify-center w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-sm border border-gray-200"
+                    aria-label="Chiudi Modal">
+                <span class="text-2xl font-light leading-none">&times;</span>
+            </button>
             
             <!-- Injected Styles & Fonts -->
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -46,7 +49,7 @@ window.babymoonModalHTML = `
 
             <!-- Header / Nav -->
             <nav class="bg-white shadow-sm sticky top-0 z-50">
-                <div class="max-w-6xl mx-auto px-6 py-5 flex justify-center items-center">
+                <div class="max-w-6xl mx-auto pl-6 pr-14 py-5 flex justify-center items-center">
                     <div class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight logo-font text-center">
                         Khaine <span class="text-teal-600">|</span> The Traveller
                     </div>

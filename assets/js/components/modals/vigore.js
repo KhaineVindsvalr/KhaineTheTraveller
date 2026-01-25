@@ -4,17 +4,20 @@ window.vigoreModalHTML = `
 <div id="vigoreModal" aria-hidden="true" style="display: none; position: fixed; inset: 0; z-index: 200; background: rgba(15, 23, 42, 0.95); overflow-y: auto;">
     
     <!-- Close Button (High Visibility) -->
-    <button onclick="toggleModal('vigoreModal')" 
-            class="fixed top-4 right-4 md:top-6 md:right-6 text-white hover:text-red-500 transition z-[210] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm rounded-full w-12 h-12 border border-white/10 shadow-lg"
-            aria-label="Chiudi Modal">
-        <span class="text-3xl font-light leading-none" style="margin-top: -4px;">&times;</span>
-    </button>
+    <!-- Close Button Removed (Moved Inside) -->
 
     <!-- Modal Content Container -->
     <div class="min-h-screen px-2 md:px-4 py-12 flex items-center justify-center">
         
         <!-- Inner Card (Simulating User Body) -->
         <div class="w-full max-w-6xl bg-white text-[#1a1a1a] leading-relaxed rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-gray-200 relative mb-12">
+            
+            <!-- Close Button (Moved Inside) -->
+            <button onclick="toggleModal('vigoreModal')" 
+                    class="absolute top-4 right-4 z-[200] text-gray-400 hover:text-[#e4002b] transition flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-100 shadow-sm"
+                    aria-label="Chiudi Modal">
+                <span class="text-2xl font-light leading-none">&times;</span>
+            </button>
             
             <!-- Fonts & Styles -->
             <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -41,7 +44,7 @@ window.vigoreModalHTML = `
             </style>
 
             <!-- Navbar Khaine | The Traveller (Replicated inside modal) -->
-            <nav class="flex justify-between items-center px-4 md:px-8 py-6 border-b border-gray-100 sticky top-0 bg-white/90 backdrop-blur-md z-40">
+            <nav class="flex justify-between items-center pl-4 pr-16 md:pl-8 md:pr-24 py-6 border-b border-gray-100 sticky top-0 bg-white/90 backdrop-blur-md z-40">
                 <div class="flex items-center space-x-3">
                     <div class="w-8 h-8 bg-leica-red rounded-full flex items-center justify-center">
                         <span class="text-white font-bold text-xs italic">K</span>

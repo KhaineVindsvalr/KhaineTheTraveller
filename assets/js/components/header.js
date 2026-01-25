@@ -46,6 +46,12 @@ window.headerHTML = `
                     <span class="text-lg md:text-2xl font-bold tracking-tighter italic whitespace-nowrap">KHAINE | <span class="text-emerald-400">The Traveller</span></span>
                 </a>
             </div>
+
+            <!-- Social Icons (Desktop Only) -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://www.facebook.com/profile.php?id=61586390626048" class="text-white hover:text-emerald-400 transition" target="_blank"><i class="fab fa-facebook text-xl"></i></a>
+                <a href="https://www.instagram.com/khaine_the_traveller/" class="text-white hover:text-emerald-400 transition" target="_blank"><i class="fab fa-instagram text-xl"></i></a>
+            </div>
             
             <div class="relative md:hidden">
                 <button id="mobileMenuButton" aria-expanded="false" aria-controls="mobileMenu" class="text-2xl">

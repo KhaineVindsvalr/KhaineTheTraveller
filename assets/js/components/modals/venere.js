@@ -4,17 +4,20 @@ window.venereModalHTML = `
 <div id="venereModal" aria-hidden="true" style="display: none; position: fixed; inset: 0; z-index: 200; background: rgba(15, 23, 42, 0.95); overflow-y: auto;">
     
     <!-- Close Button (High Visibility) -->
-    <button onclick="toggleModal('venereModal')" 
-            class="fixed top-4 right-4 md:top-6 md:right-6 text-white hover:text-rose-500 transition z-[210] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm rounded-full w-12 h-12 border border-white/10 shadow-lg"
-            aria-label="Chiudi Modal">
-        <span class="text-3xl font-light leading-none" style="margin-top: -4px;">&times;</span>
-    </button>
+    <!-- Close Button Removed (Moved Inside) -->
 
     <!-- Modal Content Container -->
     <div class="min-h-screen px-0 md:px-4 py-0 md:py-12 flex items-center justify-center">
         
         <!-- Inner Card (Simulating User Body) -->
         <div class="w-full max-w-7xl bg-slate-900 text-slate-200 leading-relaxed md:rounded-3xl overflow-hidden shadow-2xl border border-slate-800 relative mb-0 md:mb-12">
+            
+            <!-- Close Button (Moved Inside) -->
+            <button onclick="toggleModal('venereModal')" 
+                    class="absolute top-4 right-4 z-[200] text-slate-400 hover:text-rose-500 transition flex items-center justify-center w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10"
+                    aria-label="Chiudi Modal">
+                <span class="text-2xl font-light leading-none">&times;</span>
+            </button>
             
             <!-- Injected Styles -->
             <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -41,7 +44,7 @@ window.venereModalHTML = `
 
             <!-- Navigation (Relative for Modal) -->
             <nav class="w-full z-40 border-b border-white/5 bg-slate-900/90 backdrop-blur-md sticky top-0">
-                <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+                <div class="max-w-7xl mx-auto pl-6 pr-24 h-16 flex justify-between items-center">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 bg-rose-600 rounded-sm flex items-center justify-center font-serif font-bold text-white italic">K</div>
                         <div class="leading-none">

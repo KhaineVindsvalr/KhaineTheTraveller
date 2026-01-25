@@ -101,7 +101,7 @@ window.montefeltroModalHTML = `
 
         <div class="modal-content antialiased text-sm md:text-base">
             <!-- Nav / Intestazione Superiore -->
-            <nav class="w-full py-6 px-6 bg-white border-b border-gray-100 sticky top-0 z-40 flex justify-center items-center">
+            <nav class="w-full py-6 pl-6 pr-14 bg-white border-b border-gray-100 sticky top-0 z-40 flex justify-center items-center">
                 <div class="font-cinzel text-xs md:text-sm tracking-[0.5em] text-[#b28d42] uppercase text-center">
                     Khaine | The Traveller
                 </div>

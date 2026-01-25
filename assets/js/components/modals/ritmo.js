@@ -5,17 +5,20 @@ window.ritmoModalHTML = `
     
     <!-- Close Button -->
     <!-- Close Button (High Visibility) -->
-    <button onclick="toggleModal('ritmoModal')" 
-            class="fixed top-4 right-4 md:top-6 md:right-6 text-white hover:text-sky-400 transition z-[210] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm rounded-full w-12 h-12 border border-white/10 shadow-lg"
-            aria-label="Chiudi Modal">
-        <span class="text-3xl font-light leading-none" style="margin-top: -4px;">&times;</span>
-    </button>
+    <!-- Close Button Removed (Moved Inside) -->
 
     <!-- Modal Content Container -->
     <div class="min-h-screen px-4 py-12 flex items-center justify-center">
         
         <!-- Inner Card (Simulates the Body of the provided page) -->
         <div class="w-full max-w-6xl bg-slate-900 text-slate-200 leading-relaxed rounded-3xl overflow-hidden shadow-2xl border border-slate-700 relative">
+            
+             <!-- Close Button (Moved Inside) -->
+            <button onclick="toggleModal('ritmoModal')" 
+                    class="absolute top-4 right-4 z-[200] text-slate-400 hover:text-sky-400 transition flex items-center justify-center w-10 h-10 rounded-full bg-black/20 backdrop-blur-md border border-white/10"
+                    aria-label="Chiudi Modal">
+                <span class="text-2xl font-light leading-none">&times;</span>
+            </button>
             
             <!-- Scoped CSS from User's Head -->
             <style>
@@ -26,7 +29,7 @@ window.ritmoModalHTML = `
             </style>
 
             <!-- USER PROVIDED HEADER -->
-            <header class="gradient-bg py-20 px-6 text-center border-b border-slate-800">
+            <header class="gradient-bg py-20 pl-6 pr-16 text-center border-b border-slate-800">
                 <div class="max-w-4xl mx-auto">
                     <p class="text-sky-400 font-semibold tracking-widest uppercase text-sm mb-4">Khaine | The Traveller Lifestyle</p>
                     <h1 class="text-2xl md:text-3xl font-bold text-white mb-6">Ottimizzazione del Ritmo Circadiano e Routine Bio-Hacking</h1>
