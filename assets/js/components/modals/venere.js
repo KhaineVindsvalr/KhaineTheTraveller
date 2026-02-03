@@ -373,7 +373,7 @@ window.venereModalHTML = `
                     <!-- Fixed Bottom Close Button -->
                     <div class="text-center">
                          <button onclick="toggleModal('venereModal')" class="bg-rose-600 hover:bg-rose-700 text-white border border-rose-800 px-12 py-4 rounded-xl font-bold uppercase tracking-widest transition-all hover:scale-105 shadow-xl">
-                            Chiudi Pagina
+                            Chiudi
                         </button>
                     </div>
                 </footer>

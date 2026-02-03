@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardruna: L'Eco delle Rune</title>
+    <!-- Importazione Font da Google Fonts per atmosfera nordica -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            /* Oro antico */
+            --bg-color: #0d0d0d;
+            /* Nero quasi assoluto */
+            --section-bg: #1a1a1a;
+            /* Grigio scuro per i box */
+            --text-color: #e0e0e0;
+            /* Bianco sporco */
+            --text-muted: #a0a0a0;
+            --accent-color: #5d4037;
+            /* Marrone terra */
+            --hover-color: #f9d668;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* --- LANGUAGE SWITCHER --- */
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            /* Moved to left */
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 12px;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            min-width: 50px;
+            /* Ensure clickability */
+        }
+
+        .lang-btn:hover {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        /* Utility classes for language toggling */
+        .lang-en {
+            display: none;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),
+                url('https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            color: var(--primary-color);
+            margin: 0;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+            letter-spacing: 10px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-box {
+            background-color: var(--section-bg);
+            padding: 40px;
+            border-radius: 4px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-left: 2px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .section-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        strong {
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        blockquote {
+            font-family: 'Cinzel', serif;
+            font-style: italic;
+            border-left: 4px solid var(--primary-color);
+            margin: 30px 0;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        /* --- LISTS --- */
+        ul.instruments-list {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        ul.instruments-list li {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        ul.instruments-list li strong {
+            display: block;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        /* --- DISCOGRAPHY --- */
+        .discography-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .album-card {
+            background: #252525;
+            padding: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .album-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .album-content {
+            padding: 25px;
+        }
+
+        .album-year {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #000;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .tracklist {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            list-style: decimal inside;
+        }
+
+        .tracklist li {
+            margin-bottom: 4px;
+        }
+
+        .tracklist-title {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* --- SONGS --- */
+        .song-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .song-card {
+            background-color: rgba(255, 255, 255, 0.02);
+            padding: 20px;
+            border-left: 3px solid #333;
+            transition: 0.3s;
+        }
+
+        .song-card:hover {
+            border-left-color: var(--primary-color);
+            background-color: rgba(212, 175, 55, 0.05);
+        }
+
+        .rune-icon {
+            display: inline-block;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #050505;
+            border-top: 1px solid #222;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+                padding: 0 10px;
+            }
+
+            .section-box {
+                padding: 25px 15px;
+                margin-bottom: 40px;
+            }
+
+            header {
+                height: 50vh;
+                min-height: 300px;
+            }
+
+            .lang-switcher {
+                top: 15px;
+                left: 15px;
+            }
+
+            .container {
+                padding: 40px 15px;
+            }
+
+            /* Better mobile text sizing */
+            p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            blockquote {
+                font-size: 1.1rem;
+                padding: 15px 20px;
+            }
+
+            /* Single column grid on mobile */
+            .discography-grid {
+                grid-template-columns: 1fr;
+            }
+
+            ul.instruments-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="lang-switcher">
+        <button class="lang-btn" onclick="toggleLanguage()">EN</button>
+    </div>
+
+    <header>
+        <h1>Wardruna</h1>
+        <p class="subtitle lang-it">Suoni antichi per tempi moderni</p>
+        <p class="subtitle lang-en">Ancient sounds for modern times</p>
+    </header>
+
+    <div class="container">
+
+        <!-- DESCRIZIONE -->
+        <section class="section-box">
+            <h2 class="lang-it">L'Essenza del Progetto</h2>
+            <h2 class="lang-en">The Essence of the Project</h2>
+
+            <div class="lang-it">
+                <p>
+                    I <strong>Wardruna</strong> non sono semplicemente una band musicale, ma un progetto culturale
+                    norvegese fondato nel 2003 da <strong>Einar Selvik</strong> (noto anche come Kvitrafn). Nati con
+                    l'obiettivo di esplorare e risvegliare la memoria della cultura nordica, i Wardruna si distanziano
+                    dalla semplice rievocazione storica.
+                </p>
+                <p>
+                    La loro musica è il risultato di anni di ricerca approfondita sull'archeologia musicale, sulle
+                    tradizioni esoteriche delle rune e sulla poesia scaldica. Invece di tentare di replicare una musica
+                    vichinga "autentica" — di cui non esistono trascrizioni — Einar Selvik crea nuove composizioni
+                    utilizzando gli strumenti e i concetti di quell'epoca, adattandoli a una sensibilità contemporanea.
+                </p>
+                <blockquote>
+                    "Seminare nuovi semi e rafforzare vecchie radici."
+                </blockquote>
+            </div>
+
+            <div class="lang-en">
+                <p>
+                    <strong>Wardruna</strong> is not just a musical band, but a Norwegian cultural project founded in
+                    2003 by <strong>Einar Selvik</strong> (also known as Kvitrafn). Born with the aim of exploring and
+                    awakening the memory of Nordic culture, Wardruna distances itself from simple historical
+                    reenactment.
+                </p>
+                <p>
+                    Their music is the result of years of in-depth research into musical archaeology, the esoteric
+                    traditions of runes, and skaldic poetry. Instead of attempting to replicate "authentic" Viking music
+                    — of which no transcriptions exist — Einar Selvik creates new compositions using the instruments and
+                    concepts of that era, adapting them to a contemporary sensibility.
+                </p>
+                <blockquote>
+                    "Sowing new seeds and strengthening old roots."
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- STILE MUSICALE E STRUMENTI -->
+        <section class="section-box">
+            <h2 class="lang-it">Il Suono della Natura</h2>
+            <h2 class="lang-en">The Sound of Nature</h2>
+
+            <div class="lang-it">
+                <p>Lo stile dei Wardruna trascende i generi convenzionali. Spesso classificato come <em>Nordic Folk</em>
+                    o <em>Dark Ambient</em>, il loro sound è caratterizzato da ritmi ipnotici, cori potenti e l'uso
+                    massiccio di registrazioni sul campo.</p>
+                <p>Se una canzone parla di betulle, Einar la registrerà in una foresta di betulle, percuotendo il legno
+                    di quegli alberi. Se parla d'acqua, canterà immerso in un fiume. Questo approccio conferisce alla
+                    musica una qualità organica e viva.</p>
+                <h3>Strumentazione Storica</h3>
+            </div>
+
+            <div class="lang-en">
+                <p>Wardruna's style transcends conventional genres. Often classified as <em>Nordic Folk</em> or <em>Dark
+                        Ambient</em>, their sound is characterized by hypnotic rhythms, powerful choirs, and massive use
+                    of field recordings.</p>
+                <p>If a song is about birch trees, Einar will record it in a birch forest, striking the wood of those
+                    trees. If it speaks of water, he will sing immersed in a river. This approach gives the music an
+                    organic and living quality.</p>
+                <h3>Historical Instrumentation</h3>
+            </div>
+
+            <ul class="instruments-list">
+                <li>
+                    <strong>Kraviklyra</strong>
+                    <span class="lang-it">La più antica lira norvegese.</span>
+                    <span class="lang-en">The oldest known Norwegian lyre.</span>
+                </li>
+                <li>
+                    <strong>Taglharpa</strong>
+                    <span class="lang-it">Lira ad arco con corde in crine.</span>
+                    <span class="lang-en">Bowed lyre with horsehair strings.</span>
+                </li>
+                <li>
+                    <strong>Bukkehorn</strong>
+                    <span class="lang-it">Corno di capra primitivo.</span>
+                    <span class="lang-en">Primitive goat horn.</span>
+                </li>
+                <li>
+                    <strong>Lur</strong>
+                    <span class="lang-it">Lungo corno di bronzo cerimoniale.</span>
+                    <span class="lang-en">Long ceremonial bronze horn.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- FILOSOFIA -->
+        <section class="section-box">
+            <h2 class="lang-it">Filosofia e Messaggio</h2>
+            <h2 class="lang-en">Philosophy and Message</h2>
+
+            <div class="lang-it">
+                <p>
+                    Al cuore dell'opera dei Wardruna c'è l'<strong>animismo</strong>: la credenza che ogni elemento
+                    naturale (pietre, alberi, fiumi) possieda uno spirito.
+                </p>
+                <p>
+                    Il loro lavoro più imponente è la trilogia <em>Runaljod</em> ("Suono delle Rune"), un ciclo musicale
+                    durato anni in cui ogni brano è dedicato a una delle 24 rune dell'antico alfabeto Futhark. L'intento
+                    non è solo musicale, ma educativo e spirituale: insegnare il significato delle rune non come
+                    semplici lettere, ma come concetti filosofici complessi che descrivono i cicli della natura e della
+                    vita umana.
+                </p>
+            </div>
+
+            <div class="lang-en">
+                <p>
+                    At the heart of Wardruna's work is <strong>animism</strong>: the belief that every natural element
+                    (stones, trees, rivers) possesses a spirit.
+                </p>
+                <p>
+                    Their most massive work is the <em>Runaljod</em> ("Sound of Runes") trilogy, a years-long musical
+                    cycle where each track is dedicated to one of the 24 runes of the ancient Futhark alphabet. The
+                    intent is not only musical but educational and spiritual: teaching the meaning of runes not as
+                    simple letters, but as complex philosophical concepts describing the cycles of nature and human
+                    life.
+                </p>
+            </div>
+        </section>
+
+        <!-- DISCOGRAFIA -->
+        <section class="section-box">
+            <h2 class="lang-it">Discografia e Tracce</h2>
+            <h2 class="lang-en">Discography and Tracks</h2>
+
+            <div class="discography-grid">
+                <!-- Album 1 -->
+                <div class="album-card">
+                    <div class="album-content">
+                        <span class="album-year">2009</span>
+                        <h3>Runaljod – gap var Ginnunga</h3>
+                        <p class="lang-it">Il principio. Esplora le rune legate al vuoto primordiale.</p>
+                        <p class="lang-en">The beginning. Exploring runes related to the primordial void.</p>
+                        <span class="tracklist-title">Tracklist</span>
+                        <ol class="tracklist">
+                            <li>Ár var alda</li>
+                            <li>Hagal</li>
+                            <li>Bjarkan</li>
+                            <li>Laukaz</li>
+                            <li>Heimta Thurs</li>
+                            <li>Thurs</li>
+                            <li>Galgaldr</li>
+                            <li>Jara</li>
+                            <li>Kauna</li>
+                            <li>Algir - Stien klarnar</li>
+                            <li>Dagr</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- Album 2 -->
+                <div class="album-card">
+                    <div class="album-content">
+                        <span class="album-year">2013</span>
+                        <h3>Runaljod – Yggdrasil</h3>
+                        <p class="lang-it">La crescita. Incentrato sull'albero della vita.</p>
+                        <p class="lang-en">The growth. Focused on the tree of life.</p>
+                        <span class="tracklist-title">Tracklist</span>
+                        <ol class="tracklist">
+                            <li>Rotlaust tre fell</li>
+                            <li>Fehu</li>
+                            <li>NaudiR</li>
+                            <li>EhwaR</li>
+                            <li>AnsuR</li>
+                            <li>IwaR</li>
+                            <li>IngwaR</li>
+                            <li>Gibu</li>
+                            <li>Sowelu</li>
+                            <li>Solringen</li>
+                            <li>Sowelu</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- Album 3 -->
+                <div class="album-card">
+                    <div class="album-content">
+                        <span class="album-year">2016</span>
+                        <h3>Runaljod – Ragnarok</h3>
+                        <p class="lang-it">La trasformazione. L'epica conclusione della trilogia.</p>
+                        <p class="lang-en">The transformation. The epic conclusion of the trilogy.</p>
+                        <span class="tracklist-title">Tracklist</span>
+                        <ol class="tracklist">
+                            <li>Tyr</li>
+                            <li>UruR</li>
+                            <li>Isa</li>
+                            <li>MannaR - Drivande</li>
+                            <li>MannaR - Liv</li>
+                            <li>Raido</li>
+                            <li>Pertho</li>
+                            <li>Odal</li>
+                            <li>Wunjo</li>
+                            <li>Runaljod</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- Album 4 -->
+                <div class="album-card">
+                    <div class="album-content">
+                        <span class="album-year">2018</span>
+                        <h3>Skald</h3>
+                        <p class="lang-it">Intimità acustica registrata dal vivo.</p>
+                        <p class="lang-en">Acoustic intimacy recorded live.</p>
+                        <span class="tracklist-title">Tracklist</span>
+                        <ol class="tracklist">
+                            <li>Vardlokk</li>
+                            <li>Skald</li>
+                            <li>Ein sat hon uti</li>
+                            <li>Voluspá</li>
+                            <li>Fehu</li>
+                            <li>Vindavla</li>
+                            <li>Ormagardskvedi</li>
+                            <li>Gravbakkjen</li>
+                            <li>Sonatorrek</li>
+                            <li>Helvegen</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- Album 5 -->
+                <div class="album-card">
+                    <div class="album-content">
+                        <span class="album-year">2021</span>
+                        <h3>Kvitravn</h3>
+                        <p class="lang-it">Il Corvo Bianco. Magia animale e guida spirituale.</p>
+                        <p class="lang-en">The White Raven. Animal magic and spiritual guidance.</p>
+                        <span class="tracklist-title">Tracklist</span>
+                        <ol class="tracklist">
+                            <li>Synir siol</li>
+                            <li>Kvitravn</li>
+                            <li>Skugge</li>
+                            <li>Grá</li>
+                            <li>Fylgjutal</li>
+                            <li>Munin</li>
+                            <li>Kvit hjort</li>
+                            <li>Viseveiding</li>
+                            <li>Ni</li>
+                            <li>Vindavlarljod</li>
+                            <li>Andvevarljod</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CANZONI -->
+        <section class="section-box">
+            <h2 class="lang-it">Canti Sacri</h2>
+            <h2 class="lang-en">Sacred Chants</h2>
+
+            <div class="song-container">
+                <div class="song-card">
+                    <h3><span class="rune-icon">ᛉ</span> Helvegen (La Via per Hel / The Way to Hel)</h3>
+                    <p class="lang-it">Il loro capolavoro. Una canzone solenne sulla morte e sul passaggio nell'aldilà.
+                        Il testo è un antico poema funebre che augura al defunto un viaggio sicuro verso la luce,
+                        ricordando che "la parola di un uomo non muore mai".</p>
+                    <p class="lang-en">Their masterpiece. A solemn song about death and the crossing into the afterlife.
+                        The lyrics are an ancient funeral poem wishing the deceased a safe journey towards the light,
+                        reminding that "word of fame never dies".</p>
+                </div>
+
+                <div class="song-card">
+                    <h3><span class="rune-icon">ᛚ</span> Lyfjaberg (Montagna della Guarigione / Healing Mountain)</h3>
+                    <p class="lang-it">Un brano epico che narra la scalata verso una montagna sacra per ottenere la
+                        guarigione. Metafora delle difficoltà che dobbiamo affrontare per curare le nostre ferite
+                        interiori.</p>
+                    <p class="lang-en">An epic track narrating the climb up a sacred mountain to obtain healing. A
+                        metaphor for the struggles we must face to heal our inner wounds.</p>
+                </div>
+
+                <div class="song-card">
+                    <h3><span class="rune-icon">ᚠ</span> Fehu (Ricchezza / Wealth)</h3>
+                    <p class="lang-it">Un avvertimento ritmico e incalzante sulla runa della ricchezza. I Wardruna ci
+                        ricordano che l'oro provoca discordia tra fratelli e che la vera ricchezza va fatta circolare,
+                        non accumulata.</p>
+                    <p class="lang-en">A rhythmic and urgent warning about the rune of wealth. Wardruna reminds us that
+                        gold causes discord among brothers and that true wealth must circulate, not be hoarded.</p>
+                </div>
+
+                <div class="song-card">
+                    <h3><span class="rune-icon">ᚦ</span> Thurs (Il Gigante / The Giant)</h3>
+                    <p class="lang-it">Potente e minacciosa, questa canzone evoca le forze del caos e della natura
+                        incontrollabile, rappresentate dai giganti di ghiaccio della mitologia.</p>
+                    <p class="lang-en">Powerful and ominous, this song evokes the forces of chaos and uncontrollable
+                        nature, represented by the frost giants of mythology.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- ... previous sections ... -->
+            <!-- SPOTIFY LINK SECTION -->
+            <section class="section-box" style="text-align: center; margin-top: 60px;">
+                <h2 class="lang-it">Atmosfera Sonora</h2>
+                <h2 class="lang-en">Sound Atmosphere</h2>
+
+                <p class="lang-it">Per un'esperienza immersiva completa, ascolta la nostra selezione curata su Spotify.
+                </p>
+                <p class="lang-en">For a complete immersive experience, listen to our curated selection on Spotify.</p>
+
+                <div style="margin-top: 30px;">
+                    <a href="https://open.spotify.com/playlist/4Jv52BH8B67fNTn5LRu39x?si=5f7f01d413394d96"
+                        target="_blank"
+                        style="text-decoration: none; display: inline-block; background-color: #1DB954; color: #fff; padding: 15px 40px; border-radius: 30px; font-family: 'Lato', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(29, 185, 84, 0.4);">
+                        <span class="lang-it">Ascolta su Spotify</span>
+                        <span class="lang-en">Listen on Spotify</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p class="lang-it">&copy; 2026 Wardruna Fan Page. Tributo non ufficiale.</p>
+            <p class="lang-it">Creato per onorare le tradizioni del Nord.</p>
+
+            <p class="lang-en">&copy; 2026 Wardruna Fan Page. Unofficial tribute.</p>
+            <p class="lang-en">Created to honor the traditions of the North.</p>
+
+            <div style="margin-top: 40px; padding-bottom: 20px;">
+                <button onclick="window.parent.postMessage('close-modal', '*')"
+                    style="background-color: var(--primary-color); color: #000; padding: 15px 40px; border: none; border-radius: 12px; font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+                    Chiudi
+                </button>
+            </div>
+        </footer>
+
+        <script>
+            let currentLang = 'it';
+
+            function toggleLanguage() {
+                const btn = document.querySelector('.lang-btn');
+                const itElements = document.querySelectorAll('.lang-it');
+                const enElements = document.querySelectorAll('.lang-en');
+
+                if (currentLang === 'it') {
+                    // Switch to English
+                    itElements.forEach(el => el.style.display = 'none');
+                    enElements.forEach(el => el.style.display = 'block');
+
+                    // Special handling for inline-block or inline elements if needed
+                    document.querySelectorAll('span.lang-en').forEach(el => el.style.display = 'inline');
+
+                    btn.innerText = 'IT';
+                    currentLang = 'en';
+                    document.documentElement.lang = 'en';
+                } else {
+                    // Switch to Italian
+                    enElements.forEach(el => el.style.display = 'none');
+                    itElements.forEach(el => el.style.display = 'block');
+
+                    document.querySelectorAll('span.lang-it').forEach(el => el.style.display = 'inline');
+
+                    btn.innerText = 'EN';
+                    currentLang = 'it';
+                    document.documentElement.lang = 'it';
+                }
+            }
+        </script>
+
+</body>
+
+</html>

@@ -52,6 +52,7 @@
     <script src="assets/js/components/modals/venere.js"></script>
     <script src="assets/js/components/modals/babymoon.js"></script> <!-- Defines window.babymoonModalHTML -->
     <script src="assets/js/components/modals/montefeltro.js"></script>
+    <script src="assets/js/components/modals/souls_sounds.js"></script>
     <script src="assets/js/components/modals/links.js"></script>
     <!-- Defines window.linksModalHTML (Includes boscolo + link2detail) -->
 
@@ -101,6 +102,10 @@
 
         if (window.montefeltroModalHTML) {
             document.getElementById('montefeltro-placeholder').outerHTML = window.montefeltroModalHTML;
+        }
+
+        if (window.soulsSoundsModalHTML) {
+            document.body.insertAdjacentHTML('beforeend', window.soulsSoundsModalHTML);
         }
 
         // Initialize Logic (Event Listeners etc.)

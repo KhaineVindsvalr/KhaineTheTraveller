@@ -123,7 +123,7 @@ window.initLogic = function () {
     // Chiudi i modal cliccando fuori dal contenuto
     document.addEventListener('click', function (e) {
         // MODIFICA INTEGRATA: Aggiunto microModal e ritmoModal alla lista dei selettori
-        const modals = document.querySelectorAll('#itinerarioModal, #helsinkiModal, #disclaimerModal, #copeModal, #chiSonoModal, #blogModal, #contattiModal, #linkUtiliModal, #boscoloModal, #kitViaggioModal, #microModal, #ritmoModal, #vigoreModal, #venereModal, #babymoonModal, #montefeltroModal');
+        const modals = document.querySelectorAll('#itinerarioModal, #helsinkiModal, #disclaimerModal, #copeModal, #chiSonoModal, #blogModal, #contattiModal, #linkUtiliModal, #boscoloModal, #kitViaggioModal, #microModal, #ritmoModal, #vigoreModal, #venereModal, #babymoonModal, #montefeltroModal, #soulsSoundsModal');
         modals.forEach(modal => {
             if (modal.classList.contains('modal-active') && e.target === modal) {
                 modal.scrollTop = 0;
@@ -154,7 +154,7 @@ window.initLogic = function () {
 
             // MODIFICA INTEGRATA: Aggiunto microModal e ritmoModal alla lista
             // Note: Boscolo handles itself before this if active
-            const modals = document.querySelectorAll('#itinerarioModal, #helsinkiModal, #disclaimerModal, #copeModal, #chiSonoModal, #blogModal, #contattiModal, #linkUtiliModal, #kitViaggioModal, #microModal, #ritmoModal');
+            const modals = document.querySelectorAll('#itinerarioModal, #helsinkiModal, #disclaimerModal, #copeModal, #chiSonoModal, #blogModal, #contattiModal, #linkUtiliModal, #kitViaggioModal, #microModal, #ritmoModal, #soulsSoundsModal');
             modals.forEach(modal => {
                 if (modal.classList.contains('modal-active')) {
                     modal.scrollTop = 0;
@@ -162,6 +162,13 @@ window.initLogic = function () {
                     document.body.style.overflow = 'auto';
                 }
             });
+        }
+    });
+
+    // Ascolta messaggi dall'iframe (per il pulsante Chiudi in wardruna.html)
+    window.addEventListener('message', function (e) {
+        if (e.data === 'close-modal') {
+            toggleModal('soulsSoundsModal');
         }
     });
 };

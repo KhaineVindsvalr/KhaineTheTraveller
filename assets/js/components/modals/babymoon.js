@@ -360,7 +360,7 @@ window.babymoonModalHTML = `
                      <!-- Fixed Bottom Close Button (Light Theme Adapted) -->
                     <div class="text-center mt-12 pb-12">
                          <button onclick="toggleModal('babymoonModal')" class="bg-teal-600 hover:bg-teal-700 text-white border border-teal-800 px-12 py-4 rounded-xl font-bold uppercase tracking-widest transition-all hover:scale-105 shadow-xl">
-                            Chiudi Pagina
+                            Chiudi
                         </button>
                     </div>
                 </div>

@@ -31,6 +31,8 @@ window.headerHTML = `
                             </div>
                         </div>
 
+                        <a href="#" onclick="toggleModal('soulsSoundsModal'); return false;" class="block hover:text-emerald-400 transition py-2">Soul's Sounds</a>
+
                         <a href="#" onclick="toggleModal('kitViaggioModal'); return false;" class="block hover:text-emerald-400 transition py-2">Kit di Viaggio</a>
                         <a href="#" onclick="toggleModal('blogModal'); return false;" class="block hover:text-emerald-400 transition py-2">I Miei Viaggi</a>
                         <a href="#" onclick="toggleModal('chiSonoModal'); return false;" class="block hover:text-emerald-400 transition py-2">Chi sono</a>
@@ -78,6 +80,8 @@ window.headerHTML = `
                             <a href="#" onclick="toggleModal('babymoonModal'); return false;" class="block text-slate-400 hover:text-emerald-400 text-xs py-1">Babymoon</a>
                         </div>
                     </div>
+
+                    <a href="#" onclick="toggleModal('soulsSoundsModal'); return false;" class="block hover:text-emerald-400 transition">Soul's Sounds</a>
 
                     <a href="#" onclick="toggleModal('kitViaggioModal'); return false;" class="block hover:text-emerald-400 transition">Kit di Viaggio</a>
                     <a href="#" onclick="toggleModal('blogModal'); return false;" class="block hover:text-emerald-400 transition">I Miei Viaggi</a>
