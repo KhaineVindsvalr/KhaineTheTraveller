@@ -11,6 +11,7 @@ window.footerHTML = `
                 <div class="flex items-center gap-4 text-white">
                     <a href="https://www.facebook.com/profile.php?id=61586390626048" class="hover:text-emerald-400 transition" target="_blank"><i class="fab fa-facebook text-lg"></i></a>
                     <a href="https://www.instagram.com/khaine_the_traveller/" class="hover:text-emerald-400 transition" target="_blank"><i class="fab fa-instagram text-lg"></i></a>
+                    <a href="https://www.tiktok.com/@khainethetraveller?_r=1&_t=ZN-93uKRdmH2BC" class="hover:text-emerald-400 transition" target="_blank"><i class="fab fa-tiktok text-lg"></i></a>
                 </div>
             </div>
         </div>
