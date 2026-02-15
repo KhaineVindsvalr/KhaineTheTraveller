@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillingsboller Norvegesi Sani</title>
+    <!-- Tailwind CSS per lo stile veloce e moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome per le icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .recipe-card {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .step-number {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+        }
+        /* Stile checkbox personalizzato */
+        input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        .benefit-tag {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen py-8 px-4">
+
+    <!-- Main Container -->
+    <div class="max-w-3xl mx-auto bg-white rounded-2xl recipe-card overflow-hidden">
+        
+        <!-- Header Image & Title -->
+        <div class="relative h-64 bg-gray-200">
+            <img src="https://images.unsplash.com/photo-1674724199009-fbea5cce61df?auto=compress&cs=tinysrgb&w=1000" alt="Skillingsboller Norvegesi" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-6 text-white">
+                <span class="bg-blue-500 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide mb-2 inline-block">Dolce Nordico</span>
+                <h1 class="text-3xl md:text-4xl font-bold leading-tight">Skillingsboller <br>Norvegesi Sani</h1>
+            </div>
+        </div>
+
+        <!-- Meta Data Bar -->
+        <div class="flex justify-around items-center bg-blue-50 p-4 border-b border-blue-100 text-sm text-blue-800 font-medium">
+            <div class="flex flex-col items-center">
+                <i class="fa-solid fa-clock mb-1 text-lg"></i>
+                <span>25 Minuti</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fa-solid fa-fire mb-1 text-lg"></i>
+                <span>~115 Kcal Cad.</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fa-solid fa-cupcake mb-1 text-lg"></i>
+                <span>12 Pezzi</span>
+            </div>
+        </div>
+
+        <div class="p-6 md:p-8">
+            
+            <!-- Intro -->
+            <p class="text-gray-600 mb-8 italic">
+                Il dolce nordico reinventato con consapevolezza. Queste Skillingsboller sono la prova che non servono burro e zuccheri raffinati per creare un momento di dolcezza. Con la composta di mele al posto del burro e spezie come cannella e cardamomo, ogni boccone è una carezza al palato e un dono al corpo.
+            </p>
+
+            <!-- Layout Grid: Ingredients & Nutrition -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                
+                <!-- Ingredients Checklist -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fa-solid fa-basket-shopping text-blue-500 mr-2 text-xl"></i> Ingredienti
+                    </h2>
+                    <ul class="space-y-3 text-sm md:text-base">
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 cursor-pointer">
+                                <span><strong>1 confezione (350g)</strong> Base Pan Dolce Buitoni</span>
+                            </label>
+                        </li>
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 cursor-pointer">
+                                <span><strong>3-4 cucchiai</strong> Composta di Mele (senza zucchero)</span>
+                            </label>
+                        </li>
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 cursor-pointer">
+                                <span><strong>1 cucchiaio</strong> Zucchero Integrale Muscovado</span>
+                            </label>
+                        </li>
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 cursor-pointer">
+                                <span><strong>3 cucchiaini</strong> Cannella in Polvere</span>
+                            </label>
+                        </li>
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 cursor-pointer">
+                                <span><strong>1 cucchiaino</strong> Cardamomo in Polvere</span>
+                            </label>
+                        </li>
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3 cursor-pointer">
+                                <span><strong>q.b.</strong> Latte d'Avena (per spennellare)</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Nutrition & Benefits Breakdown -->
+                <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
+                    <h3 class="text-lg font-bold text-blue-800 mb-3 flex items-center">
+                        <i class="fa-solid fa-heart-pulse mr-2"></i> Analisi Nutrizionale (per pasta)
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-700">
+                            <thead class="text-xs text-blue-700 uppercase bg-blue-100">
+                                <tr>
+                                    <th class="px-2 py-2">Ingrediente</th>
+                                    <th class="px-2 py-2">Valore</th>
+                                    <th class="px-2 py-2">Beneficio</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-blue-100">
+                                <tr>
+                                    <td class="px-2 py-2 font-medium">Kcal Totali</td>
+                                    <td class="px-2 py-2">~115</td>
+                                    <td class="px-2 py-2"><span class="bg-yellow-100 text-yellow-800 benefit-tag">Leggero</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-2 font-medium">Zuccheri Aggiunti</td>
+                                    <td class="px-2 py-2">~0.8g</td>
+                                    <td class="px-2 py-2"><span class="bg-green-100 text-green-800 benefit-tag">Glicemia</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-2 font-medium">Grassi Totali</td>
+                                    <td class="px-2 py-2">~3.1g</td>
+                                    <td class="px-2 py-2"><span class="bg-pink-100 text-pink-800 benefit-tag">Cuore</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-2 font-medium">Proteine</td>
+                                    <td class="px-2 py-2">~2.4g</td>
+                                    <td class="px-2 py-2"><span class="bg-blue-100 text-blue-800 benefit-tag">Sazietà</span></td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="font-bold text-blue-900 bg-blue-50">
+                                <tr>
+                                    <td class="px-2 py-3 border-t border-blue-200">RISPARMIO</td>
+                                    <td class="px-2 py-3 border-t border-blue-200">-20%</td>
+                                    <td class="px-2 py-3 border-t border-blue-200">vs Burro</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <p class="text-xs text-blue-600 mt-3 leading-relaxed">
+                        *<strong>Nota Salute:</strong> Eliminando il burro vaccino riduciamo drasticamente i grassi saturi, proteggendo il cuore e le arterie.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Procedures (Detailed) -->
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center border-t pt-6">
+                <i class="fa-solid fa-list-ol text-blue-500 mr-3 text-xl"></i> Preparazione Dettagliata
+            </h2>
+            
+            <div class="space-y-6">
+                <!-- Step 1 -->
+                <div class="flex group">
+                    <div class="flex-shrink-0 mr-4">
+                        <div class="step-number w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shadow-md group-hover:scale-110 transition-transform">1</div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Preparazione della Farcitura</h3>
+                        <p class="text-gray-600">In una ciotolina unisci lo zucchero integrale Muscovado, la cannella in polvere e il cardamomo in polvere. Mescola bene in modo che le spezie risultino ben distribuite. Questo mix sarà il cuore del dolcetto.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex group">
+                    <div class="flex-shrink-0 mr-4">
+                        <div class="step-number w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shadow-md group-hover:scale-110 transition-transform">2</div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Sostituzione del Burro</h3>
+                        <p class="text-gray-600">Srotola la base Pan Dolce. Invece del burro tradizionale, stendi un velo uniforme di composta di mele (circa 3-4 cucchiai distribuiti). La mela fungerà da collante naturale per le spezie e manterrà l'impasto straordinariamente morbido durante la cottura.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex group">
+                    <div class="flex-shrink-0 mr-4">
+                        <div class="step-number w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shadow-md group-hover:scale-110 transition-transform">3</div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Farcitura e Arrotolamento</h3>
+                        <p class="text-gray-600">Spolvera il mix di spezie cannella-cardamomo-zucchero sulla mela. La mela esalterà l'aroma della cannella senza bisogno di grassi saturi. Arrotola l'impasto dal lato lungo e taglia 12 dischi di spessore uniforme. Sistemali sulla teglia rivestita di carta forno lasciando spazio tra loro.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex group">
+                    <div class="flex-shrink-0 mr-4">
+                        <div class="step-number w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shadow-md group-hover:scale-110 transition-transform">4</div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Spennellatura e Cottura</h3>
+                        <p class="text-gray-600">Spennella delicatamente ogni dolcetto con latte d'avena (crea una glassa leggera). Inforna a 160°C per circa 20 minuti. Controlla che non scuriscano troppo: la composta di mele mantiene questi biscotti più umidi rispetto alle versioni classiche con burro.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="mt-10 bg-blue-50 rounded-xl p-6 border border-blue-100">
+                <h3 class="text-lg font-bold text-blue-800 mb-4 flex items-center">
+                    <i class="fa-solid fa-clipboard-check mr-2"></i> Note Tecniche
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-blue-700 text-sm mb-1 uppercase">Sollievo Gastrite</h4>
+                        <p class="text-sm text-gray-600">La composta di mele cotta è molto digeribile e lenitiva per lo stomaco stressato. Il cardamomo ha proprietà calmanti aggiuntive.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-blue-700 text-sm mb-1 uppercase">Protezione Cuore</h4>
+                        <p class="text-sm text-gray-600">Eliminando il burro vaccino riduciamo drasticamente i grassi saturi. La cannella aiuta a stabilizzare la glicemia nel tempo.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-50 p-6 text-center border-t border-gray-100">
+            <p class="text-xs text-gray-400">Khaine | The Traveller &copy; 2026</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -53,13 +53,40 @@
     <script src="assets/js/components/modals/babymoon.js"></script> <!-- Defines window.babymoonModalHTML -->
     <script src="assets/js/components/modals/montefeltro.js"></script>
     <script src="assets/js/components/modals/souls_sounds.js"></script>
+    <script src="assets/js/components/modals/souls_food.js"></script>
+    <script src="assets/js/components/modals/recipe_salmon.js"></script>
+    <script src="assets/js/components/modals/recipe_chicken_turmeric.js"></script>
+    <script src="assets/js/components/modals/recipe_curry.js"></script>
+    <script src="assets/js/components/modals/recipe_lemon.js"></script>
+    <script src="assets/js/components/modals/recipe_skillingsboller.js"></script>
     <script src="assets/js/components/modals/links.js"></script>
     <!-- Defines window.linksModalHTML (Includes boscolo + link2detail) -->
 
     <!-- 2. Load Logic (Defines window.initLogic) -->
     <script src="assets/js/logic.js"></script>
 
-    <!-- 3. Inject and Initialize -->
+    <!-- 3. Make toggleModal Available Immediately -->
+    <script>
+        // Global toggleModal function - Make it available BEFORE injection
+        window.toggleModal = function(modalId) {
+            if (!modalId) return;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.toggle('modal-active');
+                if (modal.classList.contains('modal-active')) {
+                    modal.scrollTop = 0;
+                    const innerScrollable = modal.querySelectorAll('.overflow-y-auto');
+                    innerScrollable.forEach(el => {
+                        el.scrollTop = 0;
+                    });
+                }
+                const anyModalActive = document.querySelector('.modal-active');
+                document.body.style.overflow = anyModalActive ? 'hidden' : 'auto';
+            }
+        };
+    </script>
+
+    <!-- 4. Inject and Initialize -->
     <script>
         // Inject Content
         if (window.headerHTML) document.getElementById('header-placeholder').outerHTML = window.headerHTML;
@@ -78,7 +105,13 @@
             window.kitModalHTML,
             window.biohackModalHTML,
             // window.ritmoModalHTML is injected separately below
-            window.linksModalHTML
+            window.linksModalHTML,
+            window.soulsFoodModalHTML,
+            window.recipeSalmonModalHTML,
+            window.recipeChickenTurmericModalHTML,
+            window.recipeCurryModalHTML,
+            window.recipeLemonModalHTML,
+            window.recipeSkillingsbollerModalHTML
         ].join('\n');
 
         document.getElementById('modals-placeholder').outerHTML = allModals;

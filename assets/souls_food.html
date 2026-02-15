@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul's Food | Il Viaggio del Gusto</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        h1, h2, .brand-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-zen-cream {
+            background-color: #fdfbf7;
+        }
+        .text-earthy {
+            color: #5d5245;
+        }
+        .accent-color {
+            color: #8a9a5b; /* Sage green / Verde salvia */
+        }
+    </style>
+</head>
+<body class="bg-zen-cream text-gray-800 leading-relaxed m-0 p-0" style="height: 100vh; overflow-y: auto;">
+
+    <!-- HEADER (Intestazione) -->
+    <header class="w-full bg-white/80 backdrop-blur-md border-b border-stone-100">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-center items-center">
+            <div class="text-3xl font-bold brand-font accent-color tracking-widest uppercase">
+                Soul's Food
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN SECTION (Sezione Principale) -->
+    <main class="pb-20 px-6">
+        <section class="max-w-6xl mx-auto">
+            <!-- Griglia per Immagine e Testo -->
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Immagine Salmone -->
+                <div class="relative group">
+                    <div class="absolute -inset-2 bg-green-100 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+                    <div class="relative rounded-xl overflow-hidden shadow-lg aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=800" 
+                             alt="Salmone grigliato con asparagi e limone" 
+                             class="object-cover w-full h-full transform group-hover:scale-105 transition duration-700">
+                    </div>
+                </div>
+
+                <!-- Content (Contenuto) -->
+                <div class="space-y-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-earthy leading-tight">
+                       <span class="italic block accent-color">Il Viaggio del Gusto</span>
+                    </h1>
+                    
+                    <div class="h-1 w-20 bg-green-200"></div>
+
+                    <p class="text-lg text-stone-600 leading-relaxed">
+                        C'è un viaggio che non richiede passaporto, ma solo la voglia di riscoprire se stessi attraverso ciò che mettiamo nel piatto. <strong>Soul's Food</strong> è il mio spazio dedicato alla cucina che rigenera: una ricerca costante di sapori autentici, colori vivaci e ingredienti che fanno vibrare il corpo e lo spirito.
+                    </p>
+
+                    <p class="text-lg text-stone-600 leading-relaxed">
+                        Qui non si parla di calorie, ma di <span class="font-semibold italic text-green-700">frequenze</span>. È la riscoperta di un benessere che parte dal palato per illuminare tutto il resto. Dalla freschezza pungente dello zenzero alla dolcezza rassicurante della cannella, ogni ricetta è una tappa di un percorso verso la rilucenza.
+                    </p>
+
+                    <div class="bg-white p-6 border-l-4 border-green-200 shadow-sm rounded-r-lg">
+                        <p class="italic text-stone-700 text-sm md:text-base">
+                            "Prenditi un momento, respira e lasciati guidare dai profumi. Perché nutrirsi bene è la forma più alta di rispetto per la propria anima."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sezione centrata SOTTO l'immagine e il testo -->
+            <div class="mt-20 pt-8 border-t border-stone-100 text-center">
+                <span class="text-3xl md:text-4xl font-bold brand-font italic accent-color tracking-widest block">
+                    Esplora, Assapora, Splendi
+                </span>
+                <div class="mt-4 h-px w-24 bg-green-200 mx-auto opacity-50"></div>
+            </div>
+
+            <!-- NUOVA GRIGLIA RICETTE (5 riquadri) -->
+            <!-- English: Recipe Grid Section -->
+            <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Ricetta 1 -->
+                <div class="group cursor-pointer" onclick="window.parent.toggleModal('recipeSalmonModal')">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-stone-100 transition-all duration-300 group-hover:shadow-md group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1576831438132-7b74c94006b2?auto=compress&cs=tinysrgb&w=500" alt="Salmone Affumicato" class="aspect-square object-cover w-full h-full">
+                        <div class="p-4">
+                            <h3 class="font-bold brand-font text-lg text-earthy">Il Fuoco Calmo</h3>
+                            <p class="text-xs text-stone-500 mt-1 uppercase tracking-tighter">Salmone Affumicato, Zenzero e Yogurt Greco</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ricetta 2 -->
+                <div class="group cursor-pointer" onclick="window.parent.toggleModal('recipeChickenTurmericModal')">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-stone-100 transition-all duration-300 group-hover:shadow-md group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1585325701172-fcb7d019242d?auto=compress&cs=tinysrgb&w=500" alt="Pollo alla Curcuma" class="aspect-square object-cover w-full h-full">
+                        <div class="p-4">
+                            <h3 class="font-bold brand-font text-lg text-earthy">Oro e Forza</h3>
+                            <p class="text-xs text-stone-500 mt-1 uppercase tracking-tighter">Pollo alla Curcuma e Zucchine</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ricetta 3 -->
+                <div class="group cursor-pointer" onclick="window.parent.toggleModal('recipeCurryModal')">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-stone-100 transition-all duration-300 group-hover:shadow-md group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1599354607448-8ad6e92b027a?auto=compress&cs=tinysrgb&w=500" alt="Pollo al Curry" class="aspect-square object-cover w-full h-full">
+                        <div class="p-4">
+                            <h3 class="font-bold brand-font text-lg text-earthy">Il Respiro d'Oriente</h3>
+                            <p class="text-xs text-stone-500 mt-1 uppercase tracking-tighter">Pollo al Curry, Yogurt Greco e Menta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ricetta 4 -->
+                <div class="group cursor-pointer" onclick="window.parent.toggleModal('recipeLemonModal')">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-stone-100 transition-all duration-300 group-hover:shadow-md group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1630564510846-09d14907db47?auto=compress&cs=tinysrgb&w=500" alt="Pollo Limone" class="aspect-square object-cover w-full h-full">
+                        <div class="p-4">
+                            <h3 class="font-bold brand-font text-lg text-earthy">Efficienza Pura</h3>
+                            <p class="text-xs text-stone-500 mt-1 uppercase tracking-tighter">Bocconcini Pollo, Zenzero, Limone</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ricetta 5 -->
+                <div class="group cursor-pointer" onclick="window.parent.toggleModal('recipeSkillingsbollerModal')">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-stone-100 transition-all duration-300 group-hover:shadow-md group-hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1674724199009-fbea5cce61df?auto=compress&cs=tinysrgb&w=500" alt="Dolce Scandinavo" class="aspect-square object-cover w-full h-full">
+                        <div class="p-4">
+                            <h3 class="font-bold brand-font text-lg text-earthy">Abbraccio Nordico</h3>
+                            <p class="text-xs text-stone-500 mt-1 uppercase tracking-tighter">Skillingsboller Healthy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (Piè di pagina semplificato) -->
+    <footer class="bg-white border-t border-stone-100 py-10 px-6 mt-12">
+        <div class="max-w-6xl mx-auto flex flex-col items-center">
+            <p class="text-stone-400 text-xs text-center tracking-widest uppercase">
+                &copy; Khaine | The Traveller 2026
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

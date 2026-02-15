@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salmone allo Zenzero e Yogurt</title>
+    <!-- Tailwind CSS per lo stile veloce e moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome per le icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .recipe-card {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .step-number {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+        /* Stile checkbox personalizzato */
+        input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        .benefit-tag {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen py-8 px-4">
+
+    <!-- Main Container -->
+    <div class="max-w-3xl mx-auto bg-white rounded-2xl recipe-card overflow-hidden">
+        
+        <!-- Header Image & Title -->
+        <div class="relative h-64 bg-gray-200">
+            <img src="https://images.unsplash.com/photo-1576831438132-7b74c94006b2?auto=compress&cs=tinysrgb&w=1000" alt="Salmone Affumicato" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-6 text-white">
+                <span class="bg-orange-500 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide mb-2 inline-block">Cardio Friendly</span>
+                <h1 class="text-3xl md:text-4xl font-bold leading-tight">Salmone affumicato <br>allo Zenzero e Yogurt</h1>
+            </div>
+        </div>
+
+        <!-- Meta Data Bar -->
+        <div class="flex justify-around items-center bg-orange-50 p-4 border-b border-orange-100 text-sm text-orange-800 font-medium">
+            <div class="flex flex-col items-center">
+                <i class="fa-solid fa-clock mb-1 text-lg"></i>
+                <span>10 Minuti</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fa-solid fa-fire mb-1 text-lg"></i>
+                <span>~330 Kcal Totali</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fa-solid fa-user mb-1 text-lg"></i>
+                <span>1 Persona</span>
+            </div>
+        </div>
+
+        <div class="p-6 md:p-8">
+            
+            <!-- Intro -->
+            <p class="text-gray-600 mb-8 italic">
+                Un piatto bilanciato e antinfiammatorio. L'unione degli Omega-3 del salmone con le proprietà digestive dello zenzero lo rende ideale per chi cerca gusto senza appesantire la digestione (ottimo per la gastrite leggera se lo zenzero non è eccessivo).
+            </p>
+
+            <!-- Layout Grid: Ingredients & Nutrition -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                
+                <!-- Ingredients Checklist -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fa-solid fa-basket-shopping text-orange-500 mr-2 text-xl"></i> Ingredienti
+                    </h2>
+                    <ul class="space-y-3 text-sm md:text-base">
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-orange-600 focus:ring-orange-500 mr-3 cursor-pointer">
+                                <span><strong>150g</strong> Salmone Affumicato</span>
+                            </label>
+                        </li>
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-orange-600 focus:ring-orange-500 mr-3 cursor-pointer">
+                                <span><strong>50g</strong> Yogurt Greco (0% o 2%)</span>
+                            </label>
+                        </li>
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-orange-600 focus:ring-orange-500 mr-3 cursor-pointer">
+                                <span><strong>1 pezzetto</strong> Zenzero fresco</span>
+                            </label>
+                        </li>
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-orange-600 focus:ring-orange-500 mr-3 cursor-pointer">
+                                <span><strong>Metà</strong> Limone (Succo e Scorza)</span>
+                            </label>
+                        </li>
+                        <li class="flex items-start">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-orange-600 focus:ring-orange-500 mr-3 cursor-pointer">
+                                <span><strong>200g</strong> Cuore di Lattuga Iceberg</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Nutrition & Benefits Breakdown -->
+                <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
+                    <h3 class="text-lg font-bold text-blue-800 mb-3 flex items-center">
+                        <i class="fa-solid fa-heart-pulse mr-2"></i> Analisi Nutrizionale
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-700">
+                            <thead class="text-xs text-blue-700 uppercase bg-blue-100">
+                                <tr>
+                                    <th class="px-2 py-2">Ingrediente</th>
+                                    <th class="px-2 py-2">Kcal</th>
+                                    <th class="px-2 py-2">Beneficio Principale</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-blue-100">
+                                <tr>
+                                    <td class="px-2 py-2 font-medium">Salmone (150g)</td>
+                                    <td class="px-2 py-2">~255</td>
+                                    <td class="px-2 py-2"><span class="bg-pink-100 text-pink-800 benefit-tag">Omega-3</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-2 font-medium">Yogurt Greco (50g)</td>
+                                    <td class="px-2 py-2">~30</td>
+                                    <td class="px-2 py-2"><span class="bg-blue-100 text-blue-800 benefit-tag">Probiotici</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-2 font-medium">Lattuga (200g)</td>
+                                    <td class="px-2 py-2">~30</td>
+                                    <td class="px-2 py-2"><span class="bg-green-100 text-green-800 benefit-tag">Fibre/Acqua</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-2 font-medium">Zenzero & Limone</td>
+                                    <td class="px-2 py-2">~15</td>
+                                    <td class="px-2 py-2"><span class="bg-yellow-100 text-yellow-800 benefit-tag">Vit. C / Digest.</span></td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="font-bold text-blue-900 bg-blue-50">
+                                <tr>
+                                    <td class="px-2 py-3 border-t border-blue-200">TOTALE</td>
+                                    <td class="px-2 py-3 border-t border-blue-200">~330</td>
+                                    <td class="px-2 py-3 border-t border-blue-200">Alta Proteica</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <p class="text-xs text-blue-600 mt-3 leading-relaxed">
+                        *<strong>Nota Salute:</strong> Il salmone è ricco di grassi buoni che aiutano la protezione cardiovascolare. Lo zenzero ha proprietà antinfiammatorie naturali.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Procedures (Detailed) -->
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center border-t pt-6">
+                <i class="fa-solid fa-list-ol text-orange-500 mr-3 text-xl"></i> Preparazione Dettagliata
+            </h2>
+            
+            <div class="space-y-6">
+                <!-- Step 1 -->
+                <div class="flex group">
+                    <div class="flex-shrink-0 mr-4">
+                        <div class="step-number w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shadow-md group-hover:scale-110 transition-transform">1</div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Taglio dell'Iceberg</h3>
+                        <p class="text-gray-600">Lava accuratamente la mezza testa di iceberg. Asciugala bene (centrifuga se possibile) per evitare che annacqui il piatto. Tagliala a striscioline sottili ("chiffonade") di circa 0,5 cm. Disponile sul piatto creando un letto voluminoso.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex group">
+                    <div class="flex-shrink-0 mr-4">
+                        <div class="step-number w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shadow-md group-hover:scale-110 transition-transform">2</div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Emulsione </h3>
+                        <p class="text-gray-600">
+                            Prendi lo zenzero dal freezer (congelato si grattugia come una polvere finissima senza lasciare filamenti). 
+                            In una ciotola, unisci:
+                            <br>• 2-3 cucchiai abbondanti di yogurt greco
+                            <br>• Il succo di mezzo limone filtrato
+                            <br>• Lo zenzero grattugiato
+                            <br>Mescola energicamente con una forchetta fino a ottenere una crema liscia e semi-liquida.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex group">
+                    <div class="flex-shrink-0 mr-4">
+                        <div class="step-number w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shadow-md group-hover:scale-110 transition-transform">3</div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Composizione</h3>
+                        <p class="text-gray-600">Prendi le fette di salmone affumicato e adagiale sopra l'insalata senza schiacciarle troppo, cercando di dare volume al piatto.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex group">
+                    <div class="flex-shrink-0 mr-4">
+                        <div class="step-number w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shadow-md group-hover:scale-110 transition-transform">4</div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Finitura Aromatica</h3>
+                        <p class="text-gray-600">
+                            Cola la salsa allo yogurt a filo sopra il salmone. 
+                            Con una grattugia (zester), grattugia la scorza del mezzo limone (solo la parte gialla, quella bianca è amara) direttamente sopra il piatto.
+                            Completa con una generosa macinata di pepe nero fresco.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="mt-10 bg-emerald-50 rounded-xl p-6 border border-emerald-100">
+                <h3 class="text-lg font-bold text-emerald-800 mb-4 flex items-center">
+                    <i class="fa-solid fa-clipboard-check mr-2"></i> Note Tecniche
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-emerald-700 text-sm mb-1 uppercase">Lunchbox</h4>
+                        <p class="text-sm text-gray-600">Per il lavoro: metti l'insalata sotto, il salmone sopra. La crema <strong>assolutamente a parte</strong> in un barattolino. Unisci tutto solo 1 minuto prima di mangiare.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-emerald-700 text-sm mb-1 uppercase">Conservazione</h4>
+                        <p class="text-sm text-gray-600">Il salmone è delicato. Se prepari la sera prima, tieni in frigo nella parte più fredda (in basso). Consumare entro 24 ore.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-50 p-6 text-center border-t border-gray-100">
+            <p class="text-xs text-gray-400">Khaine | The Traveller &copy; 2026</p>
+        </div>
+    </div>
+
+</body>
+</html>
